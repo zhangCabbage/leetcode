@@ -72,7 +72,7 @@ public class LongestSubstring {
 	}
 	
 	/**
-	 * 使用HashSet来代替HashMap来判断是否已经存在，我这里不知道为什么使用HashSet比HashMap快
+	 * 使用HashSet来代替HashMap来判断是否已经存在，我这里不知道为什么使用HashSet比HashMap快？
 	 * 17ms
 	 * @param s
 	 * @return
