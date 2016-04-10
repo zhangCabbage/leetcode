@@ -16,6 +16,7 @@ public class ReverseInteger {
 	 * 比如：2147419999 --->  9999147412则超出范围<br/>
 	 * <br/>
 	 * 考虑不全面<br/>
+	 * 使用字符串运行时间变慢5ms
 	 * @param x
 	 * @return
 	 */
@@ -49,6 +50,7 @@ public class ReverseInteger {
 	
 	/**
 	 * 不使用String而是用自身int算，这样可以很好的控制越界错误的发生
+	 * 2ms这个时间才算不错
 	 * @param x
 	 * @return
 	 */
@@ -64,12 +66,20 @@ public class ReverseInteger {
 	    return (int)result;
 	}
 	
+	/**
+	 * 用时2ms，还凑活<br/>
+	 * 注意：<br/>
+	 * System.out.println(-5/2);  //-2<br/>
+	 * System.out.println(-5%2);  //-1<br/>
+	 * System.out.println(5/-2);  //-2<br/>
+	 * System.out.println(5%-2);  //1<br/>
+	 * 除法只要有一个为负，结果为负<br/>
+	 * 取余一定为要取余的数符号相同<br/>
+	 * @param x
+	 * @return
+	 */
 	public int reverse3(int x){
-		if(x>=0){
-			return reverseRecursive(0, x);
-		}else{
-			return -1*reverseRecursive(0, x);
-		}
+		return reverseRecursive(0, x);
 	}
 	
 	public int reverseRecursive(int res, int x){
@@ -77,7 +87,7 @@ public class ReverseInteger {
 			return res;
 		}
 		long result = (long)res*10+x%10;
-		if(result>Integer.MAX_VALUE){
+		if(result>Integer.MAX_VALUE || result<Integer.MIN_VALUE){
 			return 0;
 		}
 		return reverseRecursive((int)result, x/10);
@@ -85,6 +95,6 @@ public class ReverseInteger {
 	
 	public static void main(String[] args){
 		ReverseInteger test = new ReverseInteger();
-		System.out.println(test.reverse3(2147419999));
+		System.out.println(test.reverse3(-2147419999));
 	}
 }
