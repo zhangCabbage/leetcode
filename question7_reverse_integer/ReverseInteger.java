@@ -68,11 +68,13 @@ public class ReverseInteger {
 	
 	/**
 	 * 用时2ms，还凑活<br/>
+	 * <br/>
 	 * 注意：<br/>
 	 * System.out.println(-5/2);  //-2<br/>
 	 * System.out.println(-5%2);  //-1<br/>
 	 * System.out.println(5/-2);  //-2<br/>
 	 * System.out.println(5%-2);  //1<br/>
+	 * <br/>
 	 * 除法只要有一个为负，结果为负<br/>
 	 * 取余一定为要取余的数符号相同<br/>
 	 * @param x
