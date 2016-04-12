@@ -24,6 +24,7 @@ public class StringToInteger {
 	public static void main(String[] args){
 		StringToInteger test = new StringToInteger();
 		System.out.println(test.myAtoi(""));
-		System.out.println("  -0012a42".matches("([0-9]|\\-)*"));
+		System.out.println("(\\d|\\-|\\+)*");
+		System.out.println("-0012a42".matches("(\\d|\\-|\\+)*"));
 	}
 }
