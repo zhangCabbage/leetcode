@@ -7,7 +7,8 @@ package zhang.algorithm.leetcode.question14_longest_common_prefix;
  */
 public class LongestCommonPrefix {
 	/**
-	 * 5ms。题意没读懂的我，真是悲伤！
+	 * 5ms。题意没读懂的我，真是悲伤！<br/>
+	 * 明白后的我发现原来很简单，哭死
 	 * @param strs
 	 * @return
 	 */
