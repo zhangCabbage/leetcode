@@ -14,5 +14,6 @@ public class LongestPalindromicSubstring {
 	public static void main(String[] args){
 		LongestPalindromicSubstring test = new LongestPalindromicSubstring();
 		System.out.println(test.longestPalindrome(""));
+		
 	}
 }
