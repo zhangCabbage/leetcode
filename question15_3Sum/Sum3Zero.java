@@ -70,7 +70,8 @@ public class Sum3Zero {
 					list.add(nums[end]);
 					list.add(nums[i]);
 					lists.add(list);
-					break;
+					start++;
+					end--;
 				}else if(nums[start]+nums[end]>-nums[i]){
 					end--;
 				}else if(nums[start]+nums[end]<-nums[i]){
