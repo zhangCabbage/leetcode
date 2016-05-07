@@ -55,7 +55,7 @@ public class TwoSum {
 	
 	/**
 	 * 不借助hashMap<br/>
-	 * 首先使用快速排序把数组有序化，时间复杂度为O(n*lgn)
+	 * 首先使用快速排序把数组有序化，然后使用夹逼得方法，时间复杂度为O(n*log(n))
 	 * 
 	 * @param nums
 	 * @param target
