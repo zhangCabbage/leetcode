@@ -6,6 +6,10 @@ import java.util.List;
 
 public class Sum4 {
 	/**
+	 * 这里我想用四个位置指针的移动来进行查找四个对应的值使得a+b+c+d=target <br/>
+	 * 前两个位置指针初始在排序后的数组最开头 <br/>
+	 * 后两个位置指针初始在排序后的数组最结尾 <br/>
+	 * 暂时没有找到有效的方法使得能够循环的正确查找到所有可能的结果 <br/>
 	 * 暂时未成功！
 	 * @param nums
 	 * @param target
