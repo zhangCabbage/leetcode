@@ -27,9 +27,25 @@ public class RemoveDuplicatesElement {
         return len;
     }
 	
+	/**
+	 * 更简洁的编程，不需要记录变量！
+	 * @param nums
+	 * @return
+	 */
+	public int removeDuplicates2(int[] nums) {
+		if(nums.length<2)return nums.length;
+		int len = 1;
+		for(int i=1; i<nums.length; i++){
+			if(nums[i]!=nums[i-1]){
+				nums[len++] = nums[i];
+			}
+		}
+        return len;
+    }
+	
 	public static void main(String[] args){
 		RemoveDuplicatesElement test = new RemoveDuplicatesElement();
-		int[] nums = {1, 2, 3};
+		int[] nums = {1, 1, 2};
 		System.out.println(test.removeDuplicates(nums));
 		System.out.println(Arrays.toString(nums));
 	}

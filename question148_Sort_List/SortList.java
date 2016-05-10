@@ -6,7 +6,7 @@ import java.util.Queue;
 public class SortList {
 	/**
 	 * 链表时间复杂度为O(n*logn)的排序 <br/>
-	 * 这里的想法是实现链表的归并排序，以达到目的！
+	 * 这里的想法是实现链表的归并排序，以达到目的！但是未完成
 	 * @param head
 	 * @return
 	 */
