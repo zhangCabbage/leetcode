@@ -1,13 +1,15 @@
 package zhang.algorithm.leetcode.question29_divide_two_integers;
 
 /**
- * 不使用乘、除、取余操作，求两个数相除的结果(商)
+ * 
  * @author zhang_zack
  * @since 16/5/12
  * 
  */
 public class DivideTwoIntegers {
 	/**
+	 * 问题：不使用乘、除、取余操作，求两个数相除的结果(商) <br/>
+	 * <br/>
 	 * 这里要说一下，我很傻×的分不清<strong>被除数和除数的关系</strong>被除数/除数=商 <br/>
 	 * <br/>
 	 * 如果采用循环减法的形式来进行求商，这种方法肯定超时。比如：100000/1这种形式 <br/>
