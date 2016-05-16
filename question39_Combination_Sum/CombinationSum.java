@@ -17,7 +17,7 @@ public class CombinationSum {
 	 * 2、本题中你自己写的递归算法本身就自觉使用了回溯的思想<br/>
 	 * 3、扩展思维：if the candidate set may be used only once in the combination(如果给定候选数组每个数只能使用一次怎么办)？<br/>
 	 * subset-sum problem.
-	 * 
+	 * 正好这就是下一道题的问题Question40
 	 * @param candidates
 	 * @param target
 	 * @return
