@@ -144,10 +144,65 @@ public class MultiplyStrings {
 		return sb.toString();
 	}
 	
+//--------------------------------------------------------------------------------------------------------------------
+	/**
+	 * 这道题不难，但是我选择了一条在这里并不能起到很大优化作用的方法去实现。并且由于处理上的复杂性，导致了耗时反而更多。<br/>
+	 * 就使用普通的办法实现一遍.<br/>
+	 * <br/>
+	 * 311 / 311 test cases passed.<br/>
+	 * Status: Accepted<br/>
+	 * Runtime: 6 ms<br/>
+	 * 
+	 * @param num1
+	 * @param num2
+	 * @return
+	 */
+	public String multiply2(String num1, String num2) {
+		char[] n1 = toInteger(num1.toCharArray());
+		char[] n2 = toInteger(num2.toCharArray());
+		
+		char[] result = new char[n1.length+n2.length];
+		int carry = 0;
+		int index = 1;
+		
+		for(int i=n1.length-1; i>=0; i--){
+			if(n1[i] > 0){
+				for(int j=n2.length-1; j>=0; j--){
+					index = i+j+1;
+					int temp = (int)result[index];
+					temp = temp + carry + (n1[i]*n2[j]);
+					result[index] = (char) (temp % 10);
+					carry = temp / 10;
+				}
+				if(carry != 0){
+					result[index-1] = (char) carry;
+					carry = 0;
+				}
+			}
+		}
+		String res = new String(toChar(result));
+		while(res.length()>1 && res.charAt(0)=='0'){
+			res = res.substring(1);
+		}
+		return res;
+	}
+	private char[] toInteger(char[] c) {
+		for(int i=0; i<c.length; i++){
+			c[i] -= '0';
+		}
+		return c;
+	}
+	private char[] toChar(char[] c){
+		for(int i=0; i<c.length; i++){
+			c[i] += '0';
+		}
+		return c;
+	}
+	
 	public static void main(String[] args){
 		MultiplyStrings test = new MultiplyStrings();
-		String num1 = "1021";
-		String num2 = "5";
-		System.out.println(test.multiply(num1, num2));
+		String num1 = "98";
+		String num2 = "9";
+		System.out.println(test.multiply2(num1, num2));
 	}
 }
