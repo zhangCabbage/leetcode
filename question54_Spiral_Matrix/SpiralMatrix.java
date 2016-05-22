@@ -47,6 +47,18 @@ public class SpiralMatrix {
     	}
         return list;
     }
+    
+    /**
+     * 我自己的思路写出来的代码太臃肿，我想寻求借鉴更好的思路和代码组织方式！但是目前来看貌似没有<br/>
+     * <br/>
+     * @param matrix
+     * @return
+     */
+    public List<Integer> spiralOrder2(int[][] matrix) {
+    	List<Integer> list = new ArrayList<Integer>();
+    	
+        return list;
+    }
 	
 	public static void main(String[] args){
 		SpiralMatrix test = new SpiralMatrix();
