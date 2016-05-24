@@ -61,11 +61,11 @@ public class SelfSqrt {
 	 * Status: Accepted<br/>
 	 * Runtime: 3 ms,击败17%的人<br/>
 	 * 
-	 * @param x
+	 * @param num
 	 * @return
 	 */
-	public int mySqrt3(int x) {
-		if (x == 1)
+	public int mySqrt3(int num) {
+		if (num == 1)
 			return 1;
 		
 		float y = 1;
@@ -73,11 +73,11 @@ public class SelfSqrt {
 		//前后两次变换的距离小于1，那么就说明已经到达需要的值了
 		while ((int) (y - old) != 0) {
 			old = y;
-			y = (y + x / y) * 0.5f; // Iterative Convergence
+			y = (y + num / y) * 0.5f; // Iterative Convergence
 		}
 		int res = (int) y;
 		
-		return res * res > x ? res - 1 : res;//这里为什么会可能大于1?
+		return res * res > num ? res - 1 : res;//这里为什么会可能大于1?
 	}
 
 	public static void main(String[] args) {
