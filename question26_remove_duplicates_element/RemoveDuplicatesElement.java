@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class RemoveDuplicatesElement {
 	/**
 	 * 返回数组不同的长度len并更改nums数组前len为此数组中不同的数 <br/>
-	 * 1ms只击败了54%的人
+	 * 1ms,只击败了54%的人
 	 * @param nums
 	 * @return
 	 */
