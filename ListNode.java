@@ -7,10 +7,10 @@ package zhang.algorithm.leetcode;
 public class ListNode {
     public int val;
     public ListNode next;
-    ListNode(){
+    public ListNode(){
 
     }
-    ListNode(int x) {
+    public ListNode(int x) {
         val = x;
     }
 }

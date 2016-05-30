@@ -87,7 +87,7 @@ public class SearchinRotatedSortedArray {
      * 剩下的则为右侧循环条件<br/>
      * <br/>
      * 虽然测试结果跟我的是一样的,但是思路更加清晰易懂<br/>
-     * 
+     *
      * @param nums
      * @param target
      * @return
@@ -100,6 +100,9 @@ public class SearchinRotatedSortedArray {
             if(nums[mid] >= target && target >= nums[left]){
                 right = mid;
             }else if((target <= nums[mid] || target >= nums[left]) && nums[mid] < nums[left]){
+                //注意,这一步nums[mid] < nums[left],不能改成小于等于!!
+                //为什么呢?
+                //这里考虑最后只剩两个数的情况,此时mid和left是同一个,如果仍要求可以相等的话,那么将错误.
                 right = mid;
             }else{
                 left = mid + 1;
@@ -110,8 +113,8 @@ public class SearchinRotatedSortedArray {
 
     public static void main(String[] args) {
         SearchinRotatedSortedArray test = new SearchinRotatedSortedArray();
-        int[] nums = {1, 3, 5};
-        int target = 5;
+        int[] nums = {6, 0};
+        int target = 6;
         System.out.println(test.search(nums, target));
         System.out.println(test.search2(nums, target));
     }
