@@ -32,7 +32,7 @@ public class SortColors {
     }
 
     /**
-     * 使用前后标记<br/>
+     * 使用前后标记法,two pointers<br/>
      * @param nums
      */
     public void sortColors2(int[] nums) {
