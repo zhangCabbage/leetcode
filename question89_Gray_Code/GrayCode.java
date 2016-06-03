@@ -14,7 +14,7 @@ public class GrayCode {
      * 最后利用递推的原理做出来的,这道题目提示使用回溯来完成,具体方法有待探索<br/>
      *
      * <strong>测试结果:</strong><br/>
-     *12 / 12 test cases passed.<br/>
+     * 12 / 12 test cases passed.<br/>
      * Status: Accepted<br/>
      * Runtime: 2 ms,击败18.16%<br/>
      *
