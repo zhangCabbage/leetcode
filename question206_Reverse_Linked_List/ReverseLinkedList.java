@@ -26,8 +26,8 @@ public class ReverseLinkedList {
 
             reverseHead.next = head;
             head.next = reverseNext;
-            reverseNext = head;
 
+            reverseNext = head;
             head = next;
         }
         return reverseNext;
