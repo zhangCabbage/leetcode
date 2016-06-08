@@ -40,19 +40,15 @@ public class BinaryTreeInorderTraversal {
      * <strong>测试结果:</strong><br/>
      * 68 / 68 test cases passed<br/>
      * Status: Accepted<br/>
-     * Runtime: 1 ms,击败60.33%<br/>
+     * Runtime: 1 ms,击败60.68%<br/>
      *
      * @param root
      * @return
      */
     public List<Integer> inorderTraversal2(TreeNode root) {
         List<Integer> list = new ArrayList<Integer>();
-
-        if(root != null){
-            dfsTraversal(list, root.left);
-            list.add(root.val);
-            dfsTraversal(list, root.right);
-        }
+        dfsTraversal(list, root);
+//        dfsTraversal2(list, root);
         return list;
     }
 
@@ -70,5 +66,21 @@ public class BinaryTreeInorderTraversal {
             list.add(root.val);
         }
         return dfsTraversal(list, root.right);
+    }
+    /**
+     * 可以看到其实就是使用一般的中序遍历。函数dfsTraversal就是dfsTraversal2<br/>
+     * 所以其实code98只是稍微对中序遍历进行变形的!!<br/>
+     *
+     * @param list
+     * @param root
+     * @return
+     */
+    private void dfsTraversal2(List<Integer> list, TreeNode root) {
+        if(root == null){
+            return;
+        }
+        dfsTraversal2(list, root.left);
+        list.add(root.val);
+        dfsTraversal2(list, root.right);
     }
 }

@@ -24,33 +24,33 @@ public class PartitionList {
         ListNode biggerCur = biggerStart;
         ListNode smallerStart = null;
         ListNode smallerCur = smallerStart;
-        while(curNode != null){
-            if(curNode.val >= x){
+        while (curNode != null) {
+            if (curNode.val >= x) {
                 //bigger,右侧
-                if(biggerCur == null){
+                if (biggerCur == null) {
                     biggerCur = curNode;
                     biggerStart = curNode;
-                }else{
+                } else {
                     biggerCur.next = curNode;
                     biggerCur = biggerCur.next;
                 }
-            }else{
+            } else {
                 //smaller,左侧
-                if(smallerCur == null){
+                if (smallerCur == null) {
                     smallerCur = curNode;
                     smallerStart = curNode;
-                }else{
+                } else {
                     smallerCur.next = curNode;
                     smallerCur = smallerCur.next;
                 }
             }
             curNode = curNode.next;
         }
-        if(biggerStart == null){
+        if (biggerStart == null) {
             return smallerStart;
         }
         biggerCur.next = null;
-        if(smallerStart == null){
+        if (smallerStart == null) {
             return biggerStart;
         }
         smallerCur.next = biggerStart;
@@ -58,10 +58,10 @@ public class PartitionList {
     }
 
     /**
-     *
      * 可以使用带头结点的链表来简化程序<br/>
      * <br/>
      * 测试结果跟上一个是一样的<br/>
+     *
      * @param head
      * @param x
      * @return
@@ -72,12 +72,12 @@ public class PartitionList {
         ListNode smallerStart = new ListNode(0);
         ListNode smallerCur = smallerStart;
 
-        while(head != null){
-            if(head.val >= x){
+        while (head != null) {
+            if (head.val >= x) {
                 //bigger,右侧
                 biggerCur.next = head;
                 biggerCur = biggerCur.next;
-            }else{
+            } else {
                 //smaller,左侧
                 smallerCur.next = head;
                 smallerCur = smallerCur.next;
