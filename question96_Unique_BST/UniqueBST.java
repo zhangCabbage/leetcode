@@ -2,11 +2,10 @@ package zhang.algorithm.leetcode.question96_Unique_BST;
 
 import zhang.algorithm.modelUtil.ZhangUtil;
 
-import java.util.Arrays;
 
 /**
  * Created by zhang_zack on 16/6/6.
- * 二叉查找树,也叫最佳查找树
+ * 二叉查找树,也叫查找树,进一步有最优查找树
  */
 public class UniqueBST {
     /**
