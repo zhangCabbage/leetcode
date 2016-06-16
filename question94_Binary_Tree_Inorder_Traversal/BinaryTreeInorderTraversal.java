@@ -1,6 +1,6 @@
 package zhang.algorithm.leetcode.question94_Binary_Tree_Inorder_Traversal;
 
-import zhang.algorithm.leetcode.TreeNode;
+import zhang.algorithm.modelUtil.Tree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

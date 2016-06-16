@@ -1,6 +1,6 @@
 package zhang.algorithm.leetcode.question95_Unique_BST_II;
 
-import zhang.algorithm.leetcode.TreeNode;
+import zhang.algorithm.modelUtil.Tree.TreeNode;
 
 import java.util.List;
 

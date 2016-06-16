@@ -1,6 +1,6 @@
 package zhang.algorithm.leetcode.question102_Binary_Tree_Level_Order_Traversal;
 
-import zhang.algorithm.leetcode.TreeNode;
+import zhang.algorithm.modelUtil.Tree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

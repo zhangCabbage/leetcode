@@ -1,6 +1,6 @@
 package zhang.algorithm.leetcode.question101_Symmetric_Tree;
 
-import zhang.algorithm.leetcode.TreeNode;
+import zhang.algorithm.modelUtil.Tree.TreeNode;
 
 /**
  * Created by zhang_zack on 16/6/8.

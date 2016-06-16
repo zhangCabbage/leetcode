@@ -1,6 +1,6 @@
 package zhang.algorithm.leetcode.question111_Minimum_Depth_Binary_Tree;
 
-import zhang.algorithm.leetcode.TreeNode;
+import zhang.algorithm.modelUtil.Tree.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
