@@ -1,6 +1,6 @@
 package zhang.algorithm.leetcode.question83_Remove_Duplicates_from_Sorted_List;
 
-import zhang.algorithm.leetcode.ListNode;
+import zhang.algorithm.modelUtil.List.ListNode;
 /**
  * Created by zhang_zack on 16/5/27.
  */

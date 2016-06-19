@@ -1,8 +1,6 @@
 package zhang.algorithm.leetcode.question206_Reverse_Linked_List;
 
-import zhang.algorithm.leetcode.ListNode;
-
-import java.util.List;
+import zhang.algorithm.modelUtil.List.ListNode;
 
 /**
  * Created by zhang_zack on 16/6/3.

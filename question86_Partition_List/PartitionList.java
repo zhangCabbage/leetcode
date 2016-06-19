@@ -1,6 +1,6 @@
 package zhang.algorithm.leetcode.question86_Partition_List;
 
-import zhang.algorithm.leetcode.ListNode;
+import zhang.algorithm.modelUtil.List.ListNode;
 
 /**
  * Created by zhang_zack on 16/5/31.
