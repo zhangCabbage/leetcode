@@ -9,7 +9,9 @@ import zhang.algorithm.modelUtil.Tree.TreeNode;
 public class SortedListToBalancedBST {
     /**
      *
-     * we can still use the way similar like last problem。
+     * we can still use the way similar like last problem。<br/>
+     * The feasibility of the method is proved in the below!<br/>
+     * But I want you to solve this problem in the way that insert node to balanced binary tree.<br/>
      *
      * <strong>result of test:</strong><br/>
      * 32 / 32 test cases passed<br/>
