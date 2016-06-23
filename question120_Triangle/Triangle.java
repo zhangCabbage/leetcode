@@ -35,6 +35,8 @@ public class Triangle {
      * so I see hint: Dynamic Programing
      * It's my fault. Because of the special of this list triangle, so it can do like that.
      * <p>
+     * And this place viterbi is Dynamic Programing
+     * <p>
      * <strong>result of test:</strong><br/>
      * 43 / 43 test cases passed<br/>
      * Status: Accepted<br/>
