@@ -9,7 +9,7 @@ import java.util.List;
 public class PascalTriangle {
     /**
      * generate pascal triangle(杨辉三角形), the time complexity is O(n^2)。
-     * Could you make the time complexity of your AlgorithmDesign only O(n^2)?
+     * Could you make the time complexity of your algorithm only O(n^2)?
      * <p>
      * <br/>
      * <strong>result of test:</strong><br/>
