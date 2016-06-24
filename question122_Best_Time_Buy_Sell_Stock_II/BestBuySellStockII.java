@@ -32,6 +32,24 @@ public class BestBuySellStockII {
         return profit;
     }
 
+    /**
+     * different ideas!
+     *
+     * @param prices
+     * @return
+     */
+    public int maxProfit2(int[] prices) {
+        int len = prices.length;
+        if (len < 2) return 0;
+
+        int maxp = 0;
+        for (int i = 1; i < len; i++) {
+            if (prices[i] > prices[i - 1]) maxp += prices[i] - prices[i - 1];
+        }
+
+        return maxp;
+    }
+
     public static void main(String[] args) {
         BestBuySellStockII test = new BestBuySellStockII();
         int[] prices = {1, 2, 4, 6, 4, 5, 7};
