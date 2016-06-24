@@ -12,7 +12,7 @@ public class PascalTriangleII {
      * Here we use the way I see in the discuss of last problem
      * we also from top to bottom, but this time we only storage two rows.
      * <p>
-     * Could you optimize your algorithm to use only O(k) extra space?
+     * Could you optimize your AlgorithmDesign to use only O(k) extra space?
      * <p>
      * <strong>result of test:</strong><br/>
      * 34 / 34 test cases passed<br/>
