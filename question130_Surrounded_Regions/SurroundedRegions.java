@@ -26,9 +26,10 @@ public class SurroundedRegions {
      * <p>
      * Use breadth-first-traversal
      * <p>
-     * 58 / 58 test cases passed
-     * Status: Accepted
-     * Runtime: 8 ms, 58.71%
+     * <strong>result of test:</strong><br/>
+     * 58 / 58 test cases passed<br/>
+     * Status: Accepted<br/>
+     * Runtime: 8 ms, bit 58.71%<br/>
      *
      * @param board
      */
