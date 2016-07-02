@@ -7,12 +7,12 @@ import zhang.algorithm.modelUtil.Tree.TreeNode;
  */
 public class SortedArrayToBalancedBST {
     /**
-     * we maybe can use two different way to build a balanced binary search tree by sorted array
-     * first maybe the common way that construct a balanced binary search tree, this way almost can do in any input sence.
+     * we maybe can use two different way to build a balanced binary Search tree by sorted array
+     * first maybe the common way that construct a balanced binary Search tree, this way almost can do in any input sence.
      * but maybe we can find a way aim at the array input to easy do.<br/>
      * <br/>
      * this mind maybe I can not find until I see the next problem, I think that is this a two question?
-     * Yes, I can not deny why I has this mind is because I forget how to build a balanced binary search tree
+     * Yes, I can not deny why I has this mind is because I forget how to build a balanced binary Search tree
      * through insert node and constantly adjust tree.<br/>
      * <br/>
      * <strong>result of test:</strong><br/>

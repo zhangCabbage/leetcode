@@ -1,6 +1,6 @@
 package zhang.algorithm.leetcode.question130_Surrounded_Regions;
 
-import zhang.algorithm.modelUtil.ZhangUtil;
+import zhang.algorithm.modelUtil.Array.ArrayTool;
 
 import java.awt.*;
 import java.util.LinkedList;
@@ -102,9 +102,9 @@ public class SurroundedRegions {
 //                "XOXX",
 //        };
         String[] strs = {"XOOXXXOXOO", "XOXXXXXXXX", "XXXXOXXXXX", "XOXXXOXXXO", "OXXXOXOXOX", "XXOXXOOXXX", "OXXOOXOXXO", "OXXXXXOXXX", "XOOXXOXXOO", "XXXOOXOXXO"};
-        char[][] board = ZhangUtil.string2Char(strs);
-        ZhangUtil.printCharMatrix(board);
+        char[][] board = ArrayTool.string2Char(strs);
+        ArrayTool.printCharMatrix(board);
         test.solve(board);
-        ZhangUtil.printCharMatrix(board);
+        ArrayTool.printCharMatrix(board);
     }
 }

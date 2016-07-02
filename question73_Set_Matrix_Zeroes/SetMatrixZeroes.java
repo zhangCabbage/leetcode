@@ -1,6 +1,6 @@
 package zhang.algorithm.leetcode.question73_Set_Matrix_Zeroes;
 
-import zhang.algorithm.modelUtil.ZhangUtil;
+import zhang.algorithm.modelUtil.Array.ArrayTool;
 
 import java.util.Arrays;
 
@@ -42,8 +42,8 @@ public class SetMatrixZeroes {
     public static void main(String[] args) {
         SetMatrixZeroes test = new SetMatrixZeroes();
         int[][] matrix = {{0,0,0,5},{4,3,1,4},{0,1,1,4},{1,2,1,3},{0,0,1,1}};
-        ZhangUtil.printIntMatrix(matrix);
+        ArrayTool.printIntMatrix(matrix);
         test.setZeroes(matrix);
-        ZhangUtil.printIntMatrix(matrix);
+        ArrayTool.printIntMatrix(matrix);
     }
 }

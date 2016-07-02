@@ -1,6 +1,6 @@
 package zhang.algorithm.leetcode.question75_Sort_Colors;
 
-import zhang.algorithm.modelUtil.ZhangUtil;
+import zhang.algorithm.modelUtil.Array.ArrayTool;
 
 /**
  * Created by zhang_zack on 16/5/27.
@@ -43,14 +43,14 @@ public class SortColors {
                 if(i == start){
                     continue;
                 }
-                ZhangUtil.swap(nums, i, start);
+                ArrayTool.swap(nums, i, start);
                 i--;
                 start++;
             }else if(nums[i]==2){
                 if(i >= end){
                     continue;
                 }
-                ZhangUtil.swap(nums, i, end);
+                ArrayTool.swap(nums, i, end);
                 i--;
                 end--;
             }
@@ -64,6 +64,6 @@ public class SortColors {
 //        test.sortColors(nums);
 //        ZhangUtil.printArray(nums);
         test.sortColors2(temp);
-        ZhangUtil.printArray(temp);
+        ArrayTool.printArray(temp);
     }
 }

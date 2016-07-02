@@ -1,6 +1,6 @@
 package zhang.algorithm.leetcode.question80_Remove_Duplicates_Sorted_Array_II;
 
-import zhang.algorithm.modelUtil.ZhangUtil;
+import zhang.algorithm.modelUtil.Array.ArrayTool;
 
 /**
  * Created by zhang_zack on 16/5/29.
@@ -110,6 +110,6 @@ public class RemoveDuplicatesSortedArrayII {
         RemoveDuplicatesSortedArrayII test = new RemoveDuplicatesSortedArrayII();
         int[] nums = {1, 2};
         System.out.println(test.removeDuplicates(nums));
-        ZhangUtil.printArray(nums);
+        ArrayTool.printArray(nums);
     }
 }

@@ -51,7 +51,7 @@ public class JumpGame {
         if(n==1) return true;  //already reach the end by itself. 
 
         // 1. start from the end, work you way backward
-        // 2. the initial target Index is the last element, search the one(say index i) that reaches the target
+        // 2. the initial target Index is the last element, Search the one(say index i) that reaches the target
         // 3. then update the target Index as i, repeat step 2.
         
         int tarIndex = n-1;

@@ -1,6 +1,6 @@
 package zhang.algorithm.leetcode.question88_Merge_Sorted_Array;
 
-import zhang.algorithm.modelUtil.ZhangUtil;
+import zhang.algorithm.modelUtil.Array.ArrayTool;
 
 /**
  * Created by zhang_zack on 16/6/1.
@@ -62,6 +62,6 @@ public class MergeSortedArray {
         int[] nums2 = {2, 4, 6};
         int n = 3;
         test.merge2(nums1, m, nums2, n);
-        ZhangUtil.printArray(nums1);
+        ArrayTool.printArray(nums1);
     }
 }
