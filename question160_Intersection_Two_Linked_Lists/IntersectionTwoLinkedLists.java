@@ -1,6 +1,7 @@
 package zhang.algorithm.leetcode.question160_Intersection_Two_Linked_Lists;
 
 import zhang.algorithm.modelUtil.List.ListNode;
+import zhang.algorithm.modelUtil.List.ListTool;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,6 +13,11 @@ import zhang.algorithm.modelUtil.List.ListNode;
 public class IntersectionTwoLinkedLists {
 
     /**
+     *
+     * <strong>result of test:</strong><br/>
+     * 42 / 42 test cases passed
+     * Status: Accepted
+     * Runtime: 2 ms, bit 34.83%
      *
      * @param headA
      * @param headB
@@ -33,8 +39,11 @@ public class IntersectionTwoLinkedLists {
                 tempB = tempB.next;
             }
         }
-        lenA = (lenA < lenB) ? 0 : lenA-lenB;
+        //This is the fault place!!
+        int temp = (lenA < lenB) ? 0 : lenA-lenB;
         lenB = (lenB < lenA) ? 0 : lenB-lenA;
+        lenA = temp;
+
         tempA = headA;
         tempB = headB;
         for(int i=0; i<lenA; i++){
@@ -43,7 +52,7 @@ public class IntersectionTwoLinkedLists {
         for(int i=0; i<lenB; i++){
             tempB = tempB.next;
         }
-        while(tempA!= null && tempA != tempB){
+        while(tempA != tempB){
             tempA = tempA.next;
             tempB = tempB.next;
         }
@@ -51,6 +60,12 @@ public class IntersectionTwoLinkedLists {
     }
 
     public static void main(String[] args) {
+        int[] nums1 = {1};
+        ListNode root1 = ListTool.factory(nums1);
+        int[] nums2 = {2, 3};
+        ListNode root2 = ListTool.factory(nums2);
 
+        IntersectionTwoLinkedLists test = new IntersectionTwoLinkedLists();
+        test.getIntersectionNode(root1, root2);
     }
 }
