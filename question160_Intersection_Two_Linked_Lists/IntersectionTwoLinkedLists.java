@@ -19,6 +19,8 @@ public class IntersectionTwoLinkedLists {
      * Status: Accepted
      * Runtime: 2 ms, bit 34.83%
      *
+     * 《Beauty of programming》Have explanation. You can see and update!
+     *
      * @param headA
      * @param headB
      * @return
