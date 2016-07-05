@@ -27,9 +27,10 @@ public class LinkedListCycle {
         if(head == null || head.next == null) return false;
         ListNode first = head;
         ListNode second = head.next;
-        while(first != second && second != null){
+        while(first != second){
             first = first.next;
             second = (second.next == null) ? null : second.next.next;
+            if(second == null) return false;
         }
         if(first == second) return true;
         return false;
@@ -37,7 +38,7 @@ public class LinkedListCycle {
 
     /**
      * Other way to deal this problem.
-     * But the result is the same.
+     * But the result is the same, and it modify the original linked list。
      *
      * @param head
      * @return
