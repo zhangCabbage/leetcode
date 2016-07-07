@@ -10,6 +10,7 @@ package zhang.algorithm.leetcode.question371_Sum_Two_Integers;
 public class SumTwoIntegers {
 
     /**
+     * <strong>result of test:</strong><br/>
      * 13 / 13 test cases passed
      * Status: Accepted
      * Runtime: 0 ms, bit 6.2%
