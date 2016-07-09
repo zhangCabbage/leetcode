@@ -76,7 +76,7 @@ public class GrayCode {
 
     public static void main(String[] args) {
         GrayCode test = new GrayCode();
-        int n = 6;
+        int n = 3;
 //        System.out.println(test.grayCode(n));
         System.out.println(test.grayCode2(n));
     }
