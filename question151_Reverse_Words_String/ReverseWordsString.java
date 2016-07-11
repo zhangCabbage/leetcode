@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
  */
 public class ReverseWordsString {
     /**
+     * <strong>result of test:</strong><br/>
      * 22 / 22 test cases passed
      * Status: Accepted
      * Runtime: 12 ms, bit 40.88%
@@ -41,6 +42,117 @@ public class ReverseWordsString {
         }
 
         return sb.toString();
+    }
+
+    //--------------------------------------------------------------
+    //
+    //--------------------------------------------------------------
+
+    /**
+     * 他的思路是：
+     * zhang-love-gao ==> gao-love-zhang
+     * 也就是每个单词分别进行倒置，然后再整体倒置
+     * 1、gnahz-evol-oag 分别倒置
+     * 2、gao-love-zhang 整体倒置
+     * <p>
+     * <strong>result of test:</strong><br/>
+     * 22 / 22 test cases passed
+     * Status: Accepted
+     * Runtime: 4 ms, bit 74.48%
+     *
+     * @param s
+     * @return
+     */
+    public String reverseWords2(String s) {
+        char[] chs = s.toCharArray();
+
+        int left = 0, right = chs.length - 1;
+        while (left < chs.length && chs[left] == ' ') left++;
+        while (right >= 0 && chs[right] == ' ') right--;
+
+        if (left > right) return "";
+
+        int i = left, j = left, next = left;
+        while (i <= right && j <= right) {
+            while (i <= right && chs[i] == ' ') i++;
+            j = i;
+            while (j <= right && chs[j] != ' ') j++;
+            reverse(chs, i, j - 1);
+            if (next < i) {
+                for (int w = i; w < j; w++) {
+                    chs[next++] = chs[w];
+                }
+                chs[next++] = ' ';
+            } else {
+                next = j + 1;
+            }
+            i = j + 1;
+        }
+        if (next <= right + 1) right = next - 2;
+        reverse(chs, left, right);
+        return new String(chs, left, right - left + 1);
+    }
+
+    /**
+     * 同样的方法，但是代码有优化！！速度提升了不少
+     * <strong>result of test:</strong><br/>
+     * Runtime: 2-3 ms, bit 99.95-83%
+     *
+     * @param s
+     * @return
+     */
+    public String reverseWords3(String s) {
+        if (s == null) return null;
+
+        char[] str = s.toCharArray();
+        int start = 0, end = str.length - 1;
+
+        // Trim start of string
+        while (start <= end && str[start] == ' ')
+            start++;
+
+        // Trim end of string
+        while (end >= 0 && str[end] == ' ')
+            end--;
+
+        if (start > end)
+            return new String("");
+
+        int i = start;
+        while (i <= end) {
+            if (str[i] != ' ') {
+                // case when i points to a start of word -  find the word reverse it
+                int j = i + 1;
+                while (j <= end && str[j] != ' ')
+                    j++;
+                reverse(str, i, j - 1);
+                i = j;
+            } else {
+                if (str[i - 1] == ' ') {
+                    //case when prev char is also space - shift char to left by 1 and decrease end pointer
+                    int j = i;
+                    while (j <= end - 1) {
+                        str[j] = str[j + 1];
+                        j++;
+                    }
+                    end--;
+                } else
+                    // case when there is just single space
+                    i++;
+            }
+        }
+        //Now that all words are reversed, time to reverse the entire string pointed by start and end - This step reverses the words in string
+        reverse(str, start, end);
+        // return new string object pointed by start with len = end -start + 1
+        return new String(str, start, end - start + 1);
+    }
+
+    private void reverse(char[] chs, int left, int right) {
+        for (int wL = left, wR = right; wL < wR; wL++, wR--) {
+            char ch = chs[wL];
+            chs[wL] = chs[wR];
+            chs[wR] = ch;
+        }
     }
 
     public static void main(String[] args) {
