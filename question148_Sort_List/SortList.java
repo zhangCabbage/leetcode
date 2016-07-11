@@ -1,5 +1,7 @@
 package zhang.algorithm.leetcode.question148_Sort_List;
 
+import zhang.algorithm.modelUtil.List.ListNode;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -85,10 +87,4 @@ public class SortList {
 		head1.next = head2;
 		System.out.println(test.sortList2(head));
 	}
-}
-
-class ListNode {
-	int val;
-	ListNode next;
-	ListNode(int x) { val = x; }
 }
