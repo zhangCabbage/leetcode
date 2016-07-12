@@ -96,7 +96,7 @@ public class ReverseWordsString {
     /**
      * 同样的方法，但是代码有优化！！速度提升了不少
      * <strong>result of test:</strong><br/>
-     * Runtime: 2-3 ms, bit 99.95-83%
+     * Runtime: 2-3 ms, bit 99.95-83.61%
      *
      * @param s
      * @return
@@ -144,6 +144,45 @@ public class ReverseWordsString {
         //Now that all words are reversed, time to reverse the entire string pointed by start and end - This step reverses the words in string
         reverse(str, start, end);
         // return new string object pointed by start with len = end -start + 1
+        return new String(str, start, end - start + 1);
+    }
+
+    /**
+     * 仿照方法3自己实现
+     *
+     * @param s
+     * @return
+     */
+    public String reverseWords4(String s) {
+        if (s == null) return null;
+
+        char[] str = s.toCharArray();
+        int start = 0, end = str.length - 1;
+
+        while (start <= end && str[start] == ' ') start++;
+        while (end >= 0 && str[end] == ' ') end--;
+        if (end < start) return "";
+
+        int i = start, j;
+        while (i <= end) {
+            if (str[i] != ' ') {
+                j = i;
+                while (j <= end && str[j] != ' ')
+                    j++;
+
+                reverse(str, i, j - 1);
+                i = j + 1;
+            } else {
+                j = i;
+                while (j < end) {
+                    str[j] = str[j + 1];
+                    j++;
+                }
+                end--;
+            }
+
+        }
+        reverse(str, start, end);
         return new String(str, start, end - start + 1);
     }
 
