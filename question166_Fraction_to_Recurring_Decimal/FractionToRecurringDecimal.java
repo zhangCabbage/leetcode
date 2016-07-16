@@ -1,6 +1,7 @@
 package zhang.algorithm.leetcode.question166_Fraction_to_Recurring_Decimal;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -74,6 +75,45 @@ public class FractionToRecurringDecimal {
         }
 
         return sb.toString();
+    }
+
+    /**
+     * <strong>result of test:</strong><br/>
+     * 35 / 35 test cases passed
+     * Status: Accepted
+     * Runtime: 4 ms, bit 39,97%
+     * <p>
+     * 他的代码比我的更简洁
+     *
+     * @param numerator
+     * @param denominator
+     * @return
+     */
+    public String fractionToDecimal2(int numerator, int denominator) {
+        StringBuilder result = new StringBuilder();
+        if (1.0 * numerator / denominator < 0) {
+            result.append("-");
+        }
+        long x = Math.abs((long) numerator);
+        long y = Math.abs((long) denominator);
+        result.append(x / y);
+        x %= y;
+        if (x == 0) {
+            return result.toString();
+        }
+        result.append(".");
+        Map<Long, Integer> map = new HashMap<>();
+        while (x != 0 && !map.containsKey(x)) {
+            map.put(x, result.length());
+            x *= 10;
+            result.append(x / y);
+            x %= y;
+        }
+        if (x != 0) {
+            result.insert(map.get(x), "(");
+            result.append(")");
+        }
+        return result.toString();
     }
 
     public static void main(String[] args) {

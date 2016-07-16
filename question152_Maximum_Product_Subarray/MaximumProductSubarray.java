@@ -48,7 +48,8 @@ public class MaximumProductSubarray {
     }
 
     /**
-     *
+     * reference : [【2ms JAVA O(1) space O(n) time solution】](https://discuss.leetcode.com/topic/50905/2ms-java-o-1-space-o-n-time-solution)
+     * <p>
      * <strong>result of test:</strong><br/>
      * 183 / 183 test cases passed
      * Status: Accepted
@@ -59,15 +60,15 @@ public class MaximumProductSubarray {
      */
     public int maxProduct2(int[] nums) {
         int len = nums.length;
-        if(len == 1) return nums[0];
+        if (len == 1) return nums[0];
         int res = 0;
         int maxP = 0, maxN = Integer.MIN_VALUE, minN = 0;
         int tmp = 1, curMax = 0;
-        for(int i = 0; i < len; i++){
-            if(nums[i] == 0){
-                int cur = minN/maxN;
-                curMax = maxP>cur? maxP:cur;
-                if(curMax > res) res = curMax;
+        for (int i = 0; i < len; i++) {
+            if (nums[i] == 0) {
+                int cur = minN / maxN;
+                curMax = maxP > cur ? maxP : cur;
+                if (curMax > res) res = curMax;
                 tmp = 1;
                 maxP = 0;
                 maxN = Integer.MIN_VALUE;
@@ -75,19 +76,18 @@ public class MaximumProductSubarray {
                 continue;
             }
             tmp *= nums[i];
-            if(tmp > maxP){
+            if (tmp > maxP) {
                 maxP = tmp;
             }
-            if(tmp<0 && maxN == Integer.MIN_VALUE){
+            if (tmp < 0 && maxN == Integer.MIN_VALUE) {
                 maxN = tmp;
-            }
-            else if(tmp < minN){
+            } else if (tmp < minN) {
                 minN = tmp;
             }
         }
-        int cur = minN/maxN;
-        curMax = maxP>cur? maxP:cur;
-        if(curMax > res)res = curMax;
+        int cur = minN / maxN;
+        curMax = maxP > cur ? maxP : cur;
+        if (curMax > res) res = curMax;
         return res;
     }
 
@@ -95,5 +95,6 @@ public class MaximumProductSubarray {
         MaximumProductSubarray test = new MaximumProductSubarray();
         int[] nums = {-2, 0, 0, 3, -4, -1, 2};
         System.out.println(test.maxProduct(nums));
+        System.out.println(test.maxProduct2(nums));
     }
 }
