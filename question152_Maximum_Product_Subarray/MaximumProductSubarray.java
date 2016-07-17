@@ -91,10 +91,66 @@ public class MaximumProductSubarray {
         return res;
     }
 
+    /**
+     * 模仿上一个的思路进行coding
+     * 通过分析我们知道:假如共有15个数, 所有数都不为0, 有5个负数, 下标分别是 1、4、7、10、13
+     * 那么最大的数要么为 P(0, 12) 或 P(2, 14)
+     * <p>
+     * P(0, 12)为从前到后最大的正数
+     * P(2, 14)为从前到后最大的负数P(0, 14)除以初始的负数乘积P(0, 1)
+     * <p>
+     * <strong>result of test:</strong><br/>
+     * 183 / 183 test cases passed
+     * Status: Accepted
+     * Runtime: 2 ms, bit 92.34%
+     *
+     * @param nums
+     * @return
+     */
+    public int maxProduct3(int[] nums) {
+        if (nums == null || nums.length < 1) return 0;
+        if (nums.length == 1) return nums[0];
+
+        int res = 0; //last max product result
+        int initN = Integer.MIN_VALUE; //init negative number product
+        int minN = 0; //min negative number product
+        int maxP = 0; //max positive number product
+        int curMax = 0; //the current max number product result
+        int tmp = 1;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) {
+                int cur = minN / initN;
+                curMax = maxP > cur ? maxP : cur;
+                if (curMax > res) res = curMax;
+
+                initN = Integer.MIN_VALUE;
+                minN = 0;
+                maxP = 0;
+                tmp = 1;
+                continue;
+            }
+            tmp *= nums[i];
+            if (tmp > maxP) {
+                maxP = tmp;
+            } else if (tmp < 0 && initN == Integer.MIN_VALUE) {
+                initN = tmp;
+            } else if (tmp < minN) {
+                minN = tmp;
+            }
+        }
+
+        int cur = minN / initN;
+        curMax = maxP > cur ? maxP : cur;
+
+        return curMax > res ? curMax : res;
+    }
+
     public static void main(String[] args) {
         MaximumProductSubarray test = new MaximumProductSubarray();
         int[] nums = {-2, 0, 0, 3, -4, -1, 2};
         System.out.println(test.maxProduct(nums));
         System.out.println(test.maxProduct2(nums));
+        System.out.println(test.maxProduct3(nums));
     }
 }
