@@ -69,8 +69,8 @@ public class MinimumRotatedSortedArrayII {
     /**
      * use the way that fast search.
      * I reference other people.
-     * 就是由上一题改变部分演变而来的!You must to learn versatility。
-     *
+     * 就是由上一题改变部分演变而来的 ! You must to learn versatility。
+     * <p>
      * <strong>result of test:</strong><br/>
      * 189 / 189 test cases passed
      * Status: Accepted
