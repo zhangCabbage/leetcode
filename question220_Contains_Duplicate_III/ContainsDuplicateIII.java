@@ -119,6 +119,81 @@ public class ContainsDuplicateIII {
     //----------------------------------------------------------------------
     //But above is still not my solution in my own thought and use the special construct.
     //----------------------------------------------------------------------
+
+    /**
+     *
+     * <strong>result of test:</strong><br/>
+     * 31 / 31 test cases passed
+     * Status: Accepted
+     * Runtime: 7 ms, bit 98.5%
+     *
+     * @param nums
+     * @param k
+     * @param t
+     * @return
+     */
+    public boolean containsNearbyAlmostDuplicate2(int[] nums, int k, int t) {
+        int n = nums.length;
+        int[] indexs = new int[n];
+        for(int i = 0; i < n; i++){
+            indexs[i] = i;
+        }
+        quicksort(nums, indexs, 0, n - 1);
+
+        for(int i = 0; i < n; i++){
+            int start = nums[i];
+            int sindex = indexs[i];
+            for(int j = i + 1; j < n; j++){
+                int end = nums[j];
+                int eindex = indexs[j];
+                long diff = (long)end - (long)start;
+                if(diff > t){
+                    break;
+                }
+                if(Math.abs(eindex - sindex) <= k){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private void quicksort(int[] nums, int[] indexs, int start, int end){
+        if(start >= end){
+            return;
+        }
+        int mid = start + (end - start)/2;
+        int pivot = nums[mid];
+        int i = start;
+        int j = end;
+        while(i <= j){
+            while(nums[i] < pivot){
+                i++;
+            }
+            while(nums[j] > pivot){
+                j--;
+            }
+            if(i <= j){
+                if(nums[i] != nums[j]){
+                    swap(nums, indexs, i, j);
+                }
+                i++;
+                j--;
+            }
+        }
+        quicksort(nums, indexs, start, i - 1);
+        quicksort(nums, indexs, i, end);
+    }
+
+    private void swap(int[] nums, int[] indexs, int i, int j){
+        int value = nums[i];
+        nums[i] = nums[j];
+        nums[j] = value;
+        int index = indexs[i];
+        indexs[i] = indexs[j];
+        indexs[j] = index;
+    }
 }
 
 
