@@ -73,8 +73,8 @@ public class LargestNumber {
             strs[i++] = String.valueOf(num);
         }
         Arrays.sort(strs, new Comparator<String>() {
-            //这样想,正常排序应该是从小到大, 如果比较结果 a > b 跟一般结果不同,则返回负数
-            //这是Comparator的结果
+            //这样想,正常排序应该是从小到大
+            //现在是要从大向小排列
             @Override
             public int compare(String a, String b) {
                 String lr = a + b;
