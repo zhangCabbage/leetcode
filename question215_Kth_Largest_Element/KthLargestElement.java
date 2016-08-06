@@ -49,7 +49,7 @@ public class KthLargestElement {
     }
 
     private int quickFind(int[] nums, int start, int end, int k) {
-        int provitKey = nums[start];
+        int provitKey = nums[(int) Math.random() * (end - start) + start];
         int left = start;
         int right = end;
 
