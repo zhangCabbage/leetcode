@@ -11,8 +11,8 @@ Maybe Some modules may not be very perfect, I will continue to improve it.
 
 
 ## Build Time
-2016.4.3 4:56pm
+2016/4/3  4:56pm
 
 ## Update Time
-2016.8.13 6:15pm
+2016/8/13  6:15pm
 
