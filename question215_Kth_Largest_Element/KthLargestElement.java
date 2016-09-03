@@ -28,15 +28,14 @@ public class KthLargestElement {
         return nums[nums.length - k];
     }
 
+    //------------------------------------------------------------------------
+    //------------------------------------------------------------------------
+
     /**
      * use the fast find method, the time complexity is O(n)
      * But it looks like more slow than the way that first sort
      * and then find the kth largest element
      * <p>
-     * <strong>result of test:</strong>
-     * 31 / 31 test cases passed
-     * Status: Accepted
-     * Runtime: 55 ms, bit 26.22%
      *
      * @param nums
      * @param k
@@ -45,11 +44,25 @@ public class KthLargestElement {
     public int findKthLargest2(int[] nums, int k) {
         //使用快速查找的方法
         //unsorted array
-        return quickFind(nums, 0, nums.length - 1, k);
+        return quickFind3(nums, 0, nums.length - 1, k);
     }
 
+    /**
+     * Because of the key choose, when change the provitKey to the mid it is 2ms
+     * <p>
+     * <strong>result of test:</strong>
+     * 31 / 31 test cases passed
+     * Status: Accepted
+     * Runtime: 55 ms, bit 26.22%
+     *
+     * @param nums
+     * @param start
+     * @param end
+     * @param k
+     * @return
+     */
     private int quickFind(int[] nums, int start, int end, int k) {
-        int provitKey = nums[(int) Math.random() * (end - start) + start];
+        int provitKey = nums[start];
         int left = start;
         int right = end;
 
@@ -65,8 +78,74 @@ public class KthLargestElement {
     }
 
     /**
-     * this method is also use fast find to find the kth largest number.
-     * But it is more faster than yours
+     * <strong>result of test:</strong>
+     * 31 / 31 test cases passed
+     * Status: Accepted
+     * Runtime: 2 ms, bit 95.12%
+     *
+     * @param nums
+     * @param start
+     * @param end
+     * @param k
+     * @return
+     */
+    private int quickFind2(int[] nums, int start, int end, int k) {
+        int mid = start + ((end - start) >> 1);
+        choosePovit(nums, start, mid, end);
+        int povit = nums[start];
+
+        int left = start;
+        int right = end;
+        while (left < right) {
+            while (nums[right] > povit) right--;
+            nums[left] = nums[right];
+            while (left < right && nums[left] <= povit) left++;
+            nums[right] = nums[left];
+        }
+
+        if (end - left + 1 == k) return povit;
+        else if (end - left + 1 < k) return quickFind2(nums, start, left - 1, k - (end - left + 1));
+        else return quickFind2(nums, left + 1, end, k);
+    }
+
+    /**
+     * can not do like this, wrong!!
+     *
+     * @param nums
+     * @param start
+     * @param end
+     * @param k
+     * @return
+     */
+    private int quickFind3(int[] nums, int start, int end, int k) {
+        int mid = start + ((end - start) >> 1);
+        int povit = choosePivot(nums[start], nums[mid], nums[end]);
+
+        int l = start;
+        int r = end;
+        while (l < r) {
+            while (nums[l] < povit) l++;
+            while (nums[r] > povit) r--;
+            if (l < r) {
+                if (nums[l] != nums[r]) {
+                    swap(nums, l, r);
+                }
+                l++;
+                r--;
+            }
+        }
+
+        if (end - l + 1 == k) return povit;
+        else if (end - l + 1 < k) return quickFind3(nums, start, l - 1, k - (end - l + 1));
+        else return quickFind3(nums, l + 1, end, k);
+    }
+
+    //------------------------------------------------------------------------
+    //------------------------------------------------------------------------
+
+    /**
+     * this method use fast sort improvement by this special problem
+     * it is a very fast way.
      * <p>
      * <strong>result of test:</strong>
      * 31 / 31 test cases passed
@@ -77,13 +156,73 @@ public class KthLargestElement {
      * @param k
      * @return
      */
-    public int findKthLargest3(int[] nums, int k) {
+    public int findKthLargest4(int[] nums, int k) {
         int n = nums.length;
         int target = n - k;
         quicksort(nums, 0, n - 1, target);
         return nums[n - k];
     }
 
+    //------------------------------------------------------------------------
+    //
+    //------------------------------------------------------------------------
+
+    /**
+     * 2ms
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public int findKthLargest5(int[] nums, int k) {
+        return quickSelect(nums, 0, nums.length - 1, k);
+    }
+
+    private int quickSelect(int[] array, int left, int right, int k) {
+        int i = left, j = right;
+
+        // 每次选中间的
+        int mid = (left + right) / 2;
+        int tmp = array[mid];
+        array[mid] = array[left];
+        array[left] = tmp;
+
+        int base = array[i];
+
+        // 类似快排的挖坑填数过程
+        while (i < j) {
+            while (i < j && array[j] < base) {
+                j--;
+            }
+            if (i < j)
+                array[i++] = array[j];
+
+            while (i < j && array[i] >= base) {
+                i++;
+            }
+            if (i < j)
+                array[j--] = array[i];
+
+        }
+        array[i] = base;
+
+        if (k <= i) {
+            return quickSelect(array, left, i - 1, k);
+        } else {
+            if (k >= i + 2) {
+                return quickSelect(array, i + 1, right, k);
+            } else {
+                return array[i];
+            }
+        }
+    }
+
+    /**
+     * @param nums
+     * @param start
+     * @param end
+     * @param target
+     */
     private void quicksort(int[] nums, int start, int end, int target) {
         if (start >= end) {
             return;
@@ -115,6 +254,14 @@ public class KthLargestElement {
         }
     }
 
+    /**
+     * choose the mid one of a、b、c, In order to avoid the fast sort degradation
+     *
+     * @param a
+     * @param b
+     * @param c
+     * @return
+     */
     private int choosePivot(int a, int b, int c) {
         if (a > b) {
             if (c > a) {
@@ -135,9 +282,44 @@ public class KthLargestElement {
         }
     }
 
+    /**
+     * choose the mid of i, b, c
+     *
+     * @param l
+     * @param m
+     * @param r
+     * @return
+     */
+    private void choosePovit(int[] nums, int l, int m, int r) {
+        if (nums[l] > nums[m]) {
+            if (nums[m] > nums[r]) {
+                swap(nums, m, l);
+            } else if (nums[r] > nums[l]) {
+                //
+            } else {
+                swap(nums, r, l);
+            }
+        } else {
+            if (nums[l] > nums[r]) {
+                //
+            } else if (nums[r] > nums[m]) {
+                swap(nums, m, l);
+            } else {
+                swap(nums, r, l);
+            }
+        }
+    }
+
     private void swap(int[] nums, int i, int j) {
         int tmp = nums[i];
         nums[i] = nums[j];
         nums[j] = tmp;
+    }
+
+
+    public static void main(String[] args) {
+        KthLargestElement test = new KthLargestElement();
+        int[] nums = {7, 6, 5, 4, 3, 2, 1};
+        int k = 2;
     }
 }
