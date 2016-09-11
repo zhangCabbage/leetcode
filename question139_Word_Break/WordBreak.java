@@ -1,7 +1,5 @@
 package zhang.algorithm.leetcode.question139_Word_Break;
 
-import zhang.algorithm.modelUtil.Array.CollectionsTool;
-
 import java.util.Set;
 
 /**
@@ -187,12 +185,10 @@ public class WordBreak {
     public static void main(String[] args) {
         WordBreak test = new WordBreak();
 
-        CollectionsTool<String> collectionsTool = new CollectionsTool<String>();
 //        String[] strs = {"aaaa", "aaa"};
         String[] strs = {"a", "b", "bbb", "bbbb"};
 //        String s = "aaaaaaa";
         String s = "bb";
 
-        System.out.println(test.wordBreak(s, collectionsTool.setFactory(strs)));
     }
 }

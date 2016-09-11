@@ -1,7 +1,7 @@
 package zhang.algorithm.leetcode.question147_Insertion_Sort_List;
 
 import zhang.algorithm.modelUtil.List.ListNode;
-import zhang.algorithm.modelUtil.List.ListTool;
+import zhang.algorithm.modelUtil.List.LinkedListTools;
 
 /**
  * Created by IntelliJ IDEA.
@@ -91,7 +91,7 @@ public class InsertionSortList {
     public static void main(String[] args) {
         InsertionSortList test = new InsertionSortList();
         int[] nums = {3, 1, 2, 4};
-        ListNode head = ListTool.factory(nums);
+        ListNode head = LinkedListTools.factory(nums);
         System.out.println(head);
         head = test.insertionSortList(head);
         System.out.println(head);

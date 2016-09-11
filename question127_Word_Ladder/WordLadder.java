@@ -1,7 +1,5 @@
 package zhang.algorithm.leetcode.question127_Word_Ladder;
 
-import zhang.algorithm.modelUtil.Array.CollectionsTool;
-
 import java.util.*;
 
 /**
@@ -74,10 +72,7 @@ public class WordLadder {
         String beginWord = "hot";
         String endWord = "dog";
 
-        CollectionsTool<String> collectionsTool = new CollectionsTool<String>();
         String[] strs = {"hot", "dog", "dot"};
-        Set<String> wordList = collectionsTool.setFactory(strs);
 
-        System.out.println(test.ladderLength(beginWord, endWord, wordList));
     }
 }

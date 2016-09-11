@@ -1,7 +1,7 @@
 package zhang.algorithm.leetcode.question160_Intersection_Two_Linked_Lists;
 
 import zhang.algorithm.modelUtil.List.ListNode;
-import zhang.algorithm.modelUtil.List.ListTool;
+import zhang.algorithm.modelUtil.List.LinkedListTools;
 
 /**
  * Created by IntelliJ IDEA.
@@ -63,9 +63,9 @@ public class IntersectionTwoLinkedLists {
 
     public static void main(String[] args) {
         int[] nums1 = {1};
-        ListNode root1 = ListTool.factory(nums1);
+        ListNode root1 = LinkedListTools.factory(nums1);
         int[] nums2 = {2, 3};
-        ListNode root2 = ListTool.factory(nums2);
+        ListNode root2 = LinkedListTools.factory(nums2);
 
         IntersectionTwoLinkedLists test = new IntersectionTwoLinkedLists();
         test.getIntersectionNode(root1, root2);

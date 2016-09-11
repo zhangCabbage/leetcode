@@ -1,7 +1,7 @@
 package zhang.algorithm.leetcode.question143_Reorder_List;
 
 import zhang.algorithm.modelUtil.List.ListNode;
-import zhang.algorithm.modelUtil.List.ListTool;
+import zhang.algorithm.modelUtil.List.LinkedListTools;
 
 /**
  * Created by IntelliJ IDEA.
@@ -67,7 +67,7 @@ public class ReorderList {
     public static void main(String[] args) {
         ReorderList test = new ReorderList();
         int[] nums = {1, 2};
-        ListNode head = ListTool.factory(nums);
+        ListNode head = LinkedListTools.factory(nums);
         test.reorderList(head);
 
         System.out.println(head);
