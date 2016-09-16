@@ -8,18 +8,29 @@ package zhang.algorithm.leetcode.question374_Guess_Number;
  * To change this template use File | Settings | File Templates.
  */
 public class GuessNumber {
-    private int Num = 4;
+    private int Num = 8;
 
+    /**
+     * easy
+     * 25 / 25 test cases passed
+     * Status: Accepted
+     * Runtime: 1 ms
+     *
+     * @param n
+     * @return
+     */
     public int guessNumber(int n) {
         int l = 1;
         int r = n;
 
         while (l <= r) {
             int mid = l + ((r - l) >> 1);
+//            System.out.println(mid);
             int res = guess(mid);
+
             if (res == 0) {
                 return mid;
-            } else if (res == -1) {
+            } else if (res == 1) {
                 l = mid + 1;
             } else {
                 r = mid - 1;
@@ -28,13 +39,19 @@ public class GuessNumber {
         return 0;
     }
 
+    /**
+     * -1 if my number is lower, 1 if my number is higher, otherwise return 0
+     *
+     * @param num
+     * @return
+     */
     private int guess(int num) {
         if (this.Num == num) {
             return 0;
-        } else if (num > this.Num) {
-            return 1;
-        } else {
+        } else if (this.Num < num) {
             return -1;
+        } else {
+            return 1;
         }
     }
 
