@@ -12,8 +12,12 @@ import java.util.Random;
  * To change this template use File | Settings | File Templates.
  */
 public class RandomNode {
+    //方法一
     ListNode head;
     Random random;
+
+    //方法二
+    private int count;
 
     /**
      * @param head The linked list's head.
@@ -22,6 +26,12 @@ public class RandomNode {
     public RandomNode(ListNode head) {
         this.head = head;
         this.random = new Random();
+
+        ListNode temp = head;
+        while (temp != null) {
+            count++;
+            temp = temp.next;
+        }
     }
 
     /**
@@ -46,6 +56,15 @@ public class RandomNode {
             curNode = curNode.next;
         }
         return res;
+    }
+
+    public int getRandom2() {
+        ListNode curNode = this.head;
+        int index = random.nextInt(this.count);
+        while(index > 0){
+            curNode = curNode.next;
+        }
+        return curNode.val;
     }
 
     public static void main(String[] args) {
