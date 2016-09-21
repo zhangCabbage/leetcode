@@ -27,7 +27,7 @@ public class NthDigit {
         int size = len * 10;
         int index = n % len == 0 ? len : n % len;
         int res = 0;
-        if(index == 1) 
+        if(index == 1)
         for (int i = 0; i < index; i++) {
 
         }
