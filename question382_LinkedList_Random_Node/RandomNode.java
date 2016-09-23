@@ -61,8 +61,9 @@ public class RandomNode {
     public int getRandom2() {
         ListNode curNode = this.head;
         int index = random.nextInt(this.count);
-        while(index > 0){
+        while (index > 0) {
             curNode = curNode.next;
+            index--;
         }
         return curNode.val;
     }
