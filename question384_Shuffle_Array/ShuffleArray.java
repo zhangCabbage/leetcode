@@ -13,6 +13,7 @@ import java.util.Random;
  * Date: 16/8/27
  * Time: 下午9:13
  * To change this template use File | Settings | File Templates.
+ * <p>
  * 1) first time
  * this problem I try to use generate a random num then find the permutation of this array
  * but it is Time Limit Exceeded
