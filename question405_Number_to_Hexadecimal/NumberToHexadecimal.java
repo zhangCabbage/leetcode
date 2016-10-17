@@ -1,7 +1,5 @@
 package zhang.algorithm.leetcode.question405_Number_to_Hexadecimal;
 
-import zhang.algorithm.modelUtil.BitManipultion.BitTool;
-
 /**
  * Created by IntelliJ IDEA.
  * User: jiahua_MacPro
@@ -38,6 +36,7 @@ public class NumberToHexadecimal {
             n = 0;
         }
 
+        //去掉前导0的逻辑
         while (sb.charAt(0) == '0' && sb.length() != 1) {
             sb.deleteCharAt(0);
         }
@@ -45,10 +44,35 @@ public class NumberToHexadecimal {
         return sb.toString();
     }
 
+    /**
+     * 100 / 100 test cases passed
+     * Status: Accepted
+     * Runtime: 10 ms, bit 51.92% - 26%
+     *
+     * @param num
+     * @return
+     */
+    public String toHex2(int num) {
+        char[] digits = "0123456789abcdef".toCharArray();
+        //从前往后处理, 4个一组
+        int i = 32 - 4;
+        StringBuffer sb = new StringBuffer();
+        boolean noZero = false;
+        for (; i >= 0; i -= 4) {
+            int tmp = (num & (0xf << i)) >>> i;
+            if (tmp != 0 || noZero || i == 0) {
+                sb.append(digits[tmp]);
+                noZero = true;
+            }
+        }
+
+        return sb.toString();
+    }
+
     public static void main(String[] args) {
         NumberToHexadecimal test = new NumberToHexadecimal();
-        int num = -26;
-        BitTool.showBinary(num);
+        int num = 0;
         System.out.println(test.toHex(num));
+        System.out.println(test.toHex2(num));
     }
 }

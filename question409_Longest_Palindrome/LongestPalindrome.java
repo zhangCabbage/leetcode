@@ -14,6 +14,13 @@ public class LongestPalindrome {
      * Status: Accepted
      * Runtime: 12 ms
      *
+     * Here if use python, it has own package
+     * import collections
+     * dict(collection.Counter(s))
+     *
+     * a -> 97, z -> 122
+     * A -> 65, Z -> 90
+     *
      * @param s
      * @return
      */
@@ -31,6 +38,8 @@ public class LongestPalindrome {
 
         return num == 0 ? s.length() : s.length() - num + 1;
     }
+
+
 
     public static void main(String[] args) {
         LongestPalindrome test = new LongestPalindrome();
