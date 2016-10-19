@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class TopKFrequentElements {
     /**
-     * wrong answer, 没有读懂题意!!
+     * wrong answer, 第一次没有读懂题意!!
      *
      * @param nums
      * @param k
@@ -29,17 +29,25 @@ public class TopKFrequentElements {
     }
 
     /**
-     * 需要使用map和排序,排序算法需要为n*log(n) -> 快排fastsort、堆heap、
+     * 第二次尝试
+     * 需要使用map和排序,排序算法需要为n*log(n) -> 快排fastsort、堆heap、归并排序
+     * <p>
+     * 20 / 20 test cases passed
+     * Status: Accepted
+     * Runtime: 27 ms, bit 84.16%
      *
      * @param nums
      * @param k
      * @return
      */
     public List<Integer> topKFrequent2(int[] nums, int k) {
+        List<Integer> res = new ArrayList<>();
+        if (k == 0) return res;
+
         Map<Integer, Integer> map = new HashMap<>();
         for (int num : nums) {
-            Integer res = map.get(num);
-            map.put(num, res == null ? 1 : res + 1);
+            Integer count = map.get(num);
+            map.put(num, count == null ? 1 : count + 1);
         }
         int[] keys = new int[map.size()];
         int[] values = new int[map.size()];
@@ -49,14 +57,36 @@ public class TopKFrequentElements {
             values[i++] = entry.getValue();
         }
         //按照Value来排序
+        fastSort(values, keys, 0, values.length - 1);
 
-        return null;
+        for (i = 0; i < k; i++) {
+            res.add(keys[i]);
+        }
+        return res;
+    }
+
+    public void fastSort(int[] values, int[] keys, int left, int right) {
+        int l = left, r = right;
+        int provit = values[l];
+        int tmp = keys[l];
+        while (l < r) {
+            while (values[r] <= provit && r > l) r--;
+            values[l] = values[r];
+            keys[l] = keys[r];
+            while (values[l] >= provit && l < r) l++;
+            values[r] = values[l];
+            keys[r] = keys[l];
+        }
+        values[l] = provit;
+        keys[l] = tmp;
+        if (left < l) fastSort(values, keys, left, l - 1);
+        if (right > l) fastSort(values, keys, l + 1, right);
     }
 
     public static void main(String[] args) {
         TopKFrequentElements test = new TopKFrequentElements();
-        int[] nums = {4, 1, -1, 2, -1, 2, 3};
-        int k = 2;
-        System.out.println(test.topKFrequent(nums, k));
+        int[] nums = {};
+        int k = 0;
+        System.out.println(test.topKFrequent2(nums, k));
     }
 }
