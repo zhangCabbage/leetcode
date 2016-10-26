@@ -16,6 +16,7 @@ public class ReconstructionByHeight {
      * I can not solve this problem.
      * (https://leetcode.com/problems/queue-reconstruction-by-height/)
      * The below answer is wrong!!
+     * The tag of this problem is 【greedy】, how to deal with?
      *
      * @param people
      * @return
