@@ -11,15 +11,16 @@ Maybe Some modules may not be very perfect, I will continue to improve it.
 
 
 ## Build Time
-2016/4/3  4:56pm
+`2016/4/3  4:56pm`(北京时间)
 
 
 ## Update Time
-2016/10/28  9:42pm
+`2016/10/28  9:42pm`(北京时间)
 
 
 ## Illustrate
+Oh, yes I am chinese. But Consider from two aspects I decided to use english as much as possible in the project. On one hand for improve my poor English, on the other hand for easy to communicate with foreigners. hahaha... Though I know there is no.
 
 `16.10.28` **Said:**
 > From `April 3rd` to `October 28th` almost six and a half months, I completed half of the leetcode problem, all of the easy and almost all of the medium problem.
-Basically every question, hold on for half a year, except during the national day of half a month of desertion. The next plan is to finish the rest of the 42 medium problem, and then began to sum up and review.
+`Basically every question, hold on for half a year`, except during the national day of half a month of desertion. **The next plan is to finish the rest of the 42 medium problem, and then began to sum up and review.**
