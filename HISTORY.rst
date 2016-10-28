@@ -6,7 +6,7 @@ History
 
 * complete all easy problem
 * complete almost all medium problem
-    - reset 42 medium problem
+    - rest 42 medium problem
     - next release version will to finish
     - after that, I will begin to sum up and review.
 

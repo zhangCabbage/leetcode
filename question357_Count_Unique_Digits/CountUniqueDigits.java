@@ -13,6 +13,8 @@ public class CountUniqueDigits {
      * eg: 11、22、121...
      * How to deal it?
      * I have try to use two method to solve this problem, but still can not.
+     * ======>
+     * ======> The first failed attempt。
      *
      * @param n
      * @return
@@ -32,7 +34,16 @@ public class CountUniqueDigits {
         return (10 - bit) * countNot0(bit - 1);
     }
 
-
+    /**
+     * I want to try to use the backtracking, but logical thinking is not clear.
+     * when I have a little thought, I start code right now.
+     * This is not good!
+     * ======>
+     * ======> The second failed attempt。
+     *
+     * @param n
+     * @return
+     */
     public int countNumbersWithUniqueDigits2(int n) {
         if (n > 10) n = 10;
         int[] map = new int[10];
@@ -84,13 +95,17 @@ public class CountUniqueDigits {
     }
 
     /**
+     * 9 / 9 test cases passed
+     * Status: Accepted
+     * Runtime: 98 - 100 ms, bit 4.3%
+     *
      * @param n
      * @return
      */
     public int countNumbersWithUniqueDigits4(int n) {
         if (n > 10) n = 10;
 
-        int count = 0;
+        int count = 1;
         long max = (long) Math.pow(10, n);
         boolean[] flag = new boolean[10];
 
@@ -103,7 +118,7 @@ public class CountUniqueDigits {
         return count;
     }
 
-    private int recursive(int pre, long max, boolean[] used) {
+    private int recursive(long pre, long max, boolean[] used) {
         int count = 0;
         if (pre < max) {
             count++;
@@ -114,9 +129,9 @@ public class CountUniqueDigits {
         for (int i = 0; i < 10; i++) {
             if (!used[i]) {
                 used[i] = true;
-                int cur = pre * 10 + i;
+                long cur = pre * 10 + i;
                 int tmp = recursive(cur, max, used);
-                if (tmp == 0) break;
+//                if (tmp == 0) break;  //wrong!!
                 count += tmp;
                 used[i] = false;
             }
@@ -127,7 +142,8 @@ public class CountUniqueDigits {
 
     public static void main(String[] args) {
         CountUniqueDigits test = new CountUniqueDigits();
-        int n = 2;
-        System.out.println(test.countNumbersWithUniqueDigits2(n));
+        int n = 4;
+        System.out.println(test.countNumbersWithUniqueDigits3(n));
+        System.out.println(test.countNumbersWithUniqueDigits4(n));
     }
 }
