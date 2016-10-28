@@ -83,6 +83,48 @@ public class CountUniqueDigits {
         return ans;
     }
 
+    /**
+     * @param n
+     * @return
+     */
+    public int countNumbersWithUniqueDigits4(int n) {
+        if (n > 10) n = 10;
+
+        int count = 0;
+        long max = (long) Math.pow(10, n);
+        boolean[] flag = new boolean[10];
+
+        for (int i = 1; i < 10; i++) {
+            flag[i] = true;
+            count += recursive(i, max, flag);
+            flag[i] = false;
+        }
+
+        return count;
+    }
+
+    private int recursive(int pre, long max, boolean[] used) {
+        int count = 0;
+        if (pre < max) {
+            count++;
+        } else {
+            return count;
+        }
+
+        for (int i = 0; i < 10; i++) {
+            if (!used[i]) {
+                used[i] = true;
+                int cur = pre * 10 + i;
+                int tmp = recursive(cur, max, used);
+                if (tmp == 0) break;
+                count += tmp;
+                used[i] = false;
+            }
+        }
+
+        return count;
+    }
+
     public static void main(String[] args) {
         CountUniqueDigits test = new CountUniqueDigits();
         int n = 2;
