@@ -72,6 +72,24 @@ public class MaxProductOfWord {
         return max;
     }
 
+    /**
+     * 这里主要是想在判断两个String字符串, 是否含有相同的字符上做改进。
+     * 想使用26个 prime 数字分别表示 a-z 26个字符, 但是因为String字符串的长度没有限制,
+     * 导致这种方式会有结果太大, 每个字符串对应的单一乘积, 无法存储的问题!!
+     * <p>
+     * 有没有办法使用[位操作]就能判断两个字符是否有相同字符 ??
+     * I see the tag of this problem.
+     *
+     * @param words
+     * @return
+     */
+    public int maxProduct3(String[] words) {
+        int[] prime = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101};
+        int max = 0;
+
+        return max;
+    }
+
     private int[] father = new int[26];
     private int[] rank = new int[26];
 
@@ -105,6 +123,44 @@ public class MaxProductOfWord {
         }
         return i;
     }
+
+    //-----------------------------------------------------------------------------------
+    //以上为自己的三次想法, 但是为错误尝试。
+    //bit manipultion
+    //-----------------------------------------------------------------------------------
+
+    /**
+     * [bit manipultion]
+     * <p>
+     * 174 / 174 test cases passed
+     * Status: Accepted
+     * Runtime: 33 ms, bit 66.25%
+     *
+     * @param words
+     * @return
+     */
+    public int maxProduct4(String[] words) {
+        int max = 0;
+        int[] bytes = new int[words.length];
+        for (int i = 0; i < words.length; i++) {
+            int val = 0;
+            for (int j = 0; j < words[i].length(); j++) {
+                val |= (1 << (words[i].charAt(j) - 'a'));
+            }
+            bytes[i] = val;
+        }
+
+        for (int i = 0; i < words.length - 1; i++) {
+            for (int j = i + 1; j < words.length; j++) {
+                if ((bytes[i] & bytes[j]) == 0) {
+                    max = Math.max(words[i].length() * words[j].length(), max);
+                }
+            }
+        }
+
+        return max;
+    }
+
 
     public static void main(String[] args) {
         MaxProductOfWord test = new MaxProductOfWord();
