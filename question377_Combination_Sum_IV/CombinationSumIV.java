@@ -11,6 +11,7 @@ import java.util.Arrays;
  */
 public class CombinationSumIV {
     /**
+     * backtracking
      * This can deal this problem, but [Time Limit Exceeded]
      *
      * @param nums
@@ -36,13 +37,11 @@ public class CombinationSumIV {
     }
 
 
-
-
-    
     public static void main(String[] args) {
         CombinationSumIV test = new CombinationSumIV();
         int[] nums = {1, 2, 3};
         int target = 32;
+        //the result is 181997601
         System.out.println(test.combinationSum4(nums, target));
     }
 }
