@@ -1,8 +1,6 @@
 package zhang.algorithm.leetcode.question241_Different_Add_Parentheses;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -13,6 +11,10 @@ import java.util.List;
  */
 public class DifferentAddParentheses {
     /**
+     * MDZZ, 今天头有点晕, 竟然写了这么烂的代码, 自己都看不下, 而且还没有AC
+     * 我猜这个状态的我, 一定是个智障!!
+     * 原题地址:(https://leetcode.com/problems/different-ways-to-add-parentheses/)
+     *
      * @param input
      * @return
      */
@@ -86,6 +88,42 @@ public class DifferentAddParentheses {
                 helper(list, nums, opers, left, right + 1, tmp);
             }
         }
+    }
+
+    //----------------------------------------------------------------------
+    //仔细读题, 认真思考
+    //----------------------------------------------------------------------
+    private Map<String, List<Integer>> map = new HashMap<>();
+
+    /**
+     * 25 / 25 test cases passed.
+     * Status: Accepted
+     * Runtime: 8 - 11 ms, bit 33.01 - 8.52%
+     *
+     * @param input
+     * @return
+     */
+    public List<Integer> diffWaysToCompute2(String input) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < input.length(); i++) {
+            char cur = input.charAt(i);
+            if (cur == '+' || cur == '-' || cur == '*') {
+                String before = input.substring(0, i);
+                String after = input.substring(i + 1);
+                List<Integer> l1 = map.getOrDefault(before, diffWaysToCompute2(before));
+                List<Integer> l2 = map.getOrDefault(after, diffWaysToCompute2(after));
+                for (Integer i1 : l1) {
+                    for (Integer i2 : l2) {
+                        list.add(cur == '+' ? i1 + i2 : cur == '-' ? i1 - i2 : i1 * i2);
+                    }
+                }
+            }
+        }
+
+        if (list.size() == 0) list.add(Integer.parseInt(input));
+        map.put(input, list);
+
+        return list;
     }
 
     public static void main(String[] args) {
