@@ -56,8 +56,8 @@ public class MaxXORTwoNumArray {
     }
 
     /**
-     * TODO
      * 还可以使用字典树的形式, 请参见(https://discuss.leetcode.com/topic/63207/java-o-n-solution-using-trie)
+     * 但是总体上来说, trie树的方式, 跟O(n^2)的思想差不多, 不过转换成了O(32n)的形式。
      *
      * @param nums
      * @return
