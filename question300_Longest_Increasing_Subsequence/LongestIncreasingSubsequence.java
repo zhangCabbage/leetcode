@@ -51,6 +51,7 @@ public class LongestIncreasingSubsequence {
 
     /**
      * 方法2 -- 耐心排序法
+     * Robinson-Schensted-Knuth Algorithm
      * Time Complexity - O(n * logN)， Space Complexity - O(n)。
      * 这道题的思想就是, 从前到后排序。
      * 求最大长度的递增子串, 那么例如: 2、8、3、6、4、5
