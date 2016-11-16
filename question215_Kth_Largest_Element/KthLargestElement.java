@@ -10,8 +10,11 @@ import java.util.Arrays;
  * To change this template use File | Settings | File Templates.
  */
 public class KthLargestElement {
+    //------------------------------------------------------------------------
+    //------------------------------------------------------------------------
 
     /**
+     * 方法一: 使用系统自带快速排序
      * use sort the time complexity is O(n*logn)
      * <p>
      * <strong>result of test:</strong>
@@ -48,6 +51,7 @@ public class KthLargestElement {
     }
 
     /**
+     * 方法二: 每次使用第一个元素作为povit进行快速查找, 【思想在, 效果不好, 不推荐】
      * Because of the key choose, when change the provitKey to the mid it is 2ms
      * <p>
      * <strong>result of test:</strong>
@@ -78,6 +82,7 @@ public class KthLargestElement {
     }
 
     /**
+     * 方法三: 每次使用start、mid、end的中值作为povit, 【推荐】
      * <strong>result of test:</strong>
      * 31 / 31 test cases passed
      * Status: Accepted
@@ -109,7 +114,9 @@ public class KthLargestElement {
     }
 
     /**
-     * can not do like this, wrong!!
+     * ×××××××××××
+     * 【Wrong】
+     * ×××××××××××
      *
      * @param nums
      * @param start
@@ -144,6 +151,7 @@ public class KthLargestElement {
     //------------------------------------------------------------------------
 
     /**
+     * 方法四: 自己写快速排序的方法
      * this method use fast sort improvement by this special problem
      * it is a very fast way.
      * <p>
@@ -164,10 +172,10 @@ public class KthLargestElement {
     }
 
     //------------------------------------------------------------------------
-    //
     //------------------------------------------------------------------------
 
     /**
+     * 方法五: 使用中间的数作为povit
      * 2ms
      *
      * @param nums
