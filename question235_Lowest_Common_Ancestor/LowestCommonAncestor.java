@@ -59,7 +59,7 @@ public class LowestCommonAncestor {
         }
         int res = helper(root.left, p, q);
         if (res == 1) common = root;
-        else if (res == 2 || res + count == 2) return res;
+        else if (res == 2) return res;
 
         return count + res + helper(root.right, p, q);
     }
