@@ -76,9 +76,26 @@ public class MinMovesEqualArrayElemsII {
         return count;
     }
 
+    /**
+     * 为了验证上一个的理论, 码代码如下
+     * 结果可知, Accepted!
+     *
+     * @param nums
+     * @return
+     */
+    public int minMoves2_3(int[] nums) {
+        Arrays.sort(nums);
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            count += Math.abs(nums[i] - nums[nums.length / 2]);
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         MinMovesEqualArrayElemsII test = new MinMovesEqualArrayElemsII();
         int[] nums = {203125577, -349566234, 230332704, 48321315, 66379082, 386516853, 50986744, -250908656, -425653504, -212123143};
-        System.out.println(test.minMoves2(nums));
+        System.out.println(test.minMoves2_2(nums));
+        System.out.println(test.minMoves2_3(nums));
     }
 }
