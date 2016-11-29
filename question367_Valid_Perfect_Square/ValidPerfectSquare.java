@@ -6,6 +6,7 @@ package zhang.algorithm.leetcode.question367_Valid_Perfect_Square;
  * Date: 16/11/29
  * Time: 下午9:53
  * To change this template use File | Settings | File Templates.
+ * TODO, 没有审查
  */
 public class ValidPerfectSquare {
     /**
@@ -51,10 +52,27 @@ public class ValidPerfectSquare {
         return false;
     }
 
+    /**
+     * 改进上面采用二分查找的代码构造, 避免超出Integer.MAX_VALUE范围
+     *
+     * @param num
+     * @return
+     */
+    public boolean isPerfectSquare3(int num) {
+        int l = 1, r = num;
+        while (l < r) {
+            int mid = l + (r - l >> 1);
+            if (mid < num / mid) l = mid + 1;
+            else r = mid;
+        }
+        return l == (double) num / l;
+    }
+
     public static void main(String[] args) {
         ValidPerfectSquare test = new ValidPerfectSquare();
         int num = 808201;  //899
         System.out.println(test.isPerfectSquare(num));
         System.out.println(test.isPerfectSquare2(num));
+        System.out.println(test.isPerfectSquare3(num));
     }
 }
