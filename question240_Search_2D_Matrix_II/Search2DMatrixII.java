@@ -12,9 +12,11 @@ package zhang.algorithm.leetcode.question240_Search_2D_Matrix_II;
  * update
  * Date: 16/11/29
  * Time: 下午9:30
- * TODO, 没有审查
  */
 public class Search2DMatrixII {
+    //------------------------------------------------------------------
+    //------------------------------------------------------------------
+
     /**
      * o(m * log(n)) => 还能否继续优化
      * <p>
@@ -45,15 +47,30 @@ public class Search2DMatrixII {
         return false;
     }
 
+    //------------------------------------------------------------------
+    //if we look from top-right as root of a tree, this matrix look like a [binary search tree]
+    //so we can solve it at O(m+n) time.
+    //------------------------------------------------------------------
+
     /**
+     * O(m+n) time complexity
+     * reference: https://discuss.leetcode.com/topic/20064/my-concise-o-m-n-java-solution
+     * 127 / 127 test cases passed.
+     * Status: Accepted
+     * Runtime: 14 ms
+     *
      * @param matrix
      * @param target
      * @return
      */
     public boolean searchMatrix2(int[][] matrix, int target) {
-        int m = matrix.length;
-        for (int i = 0; i < m; i++) {
-            if (binarySearch(matrix[i], target)) return true;
+        if (matrix == null || matrix.length < 1 || matrix[0].length < 1) return false;
+        int row = 0;
+        int col = matrix[0].length - 1;
+        while (row < matrix.length && col >= 0) {
+            if (target == matrix[row][col]) return true;
+            else if (target > matrix[row][col]) row++;
+            else col--;
         }
         return false;
     }
@@ -63,5 +80,6 @@ public class Search2DMatrixII {
         int[][] matrix = {{-5}};
         int target = -2;
         System.out.println(test.searchMatrix(matrix, target));
+        System.out.println(test.searchMatrix2(matrix, target));
     }
 }

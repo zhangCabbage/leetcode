@@ -6,9 +6,12 @@ package zhang.algorithm.leetcode.question367_Valid_Perfect_Square;
  * Date: 16/11/29
  * Time: 下午9:53
  * To change this template use File | Settings | File Templates.
- * TODO, 没有审查
  */
 public class ValidPerfectSquare {
+    //------------------------------------------------------------------
+    //Newton - 牛顿迭代法, Time Complexity is close to constant
+    //------------------------------------------------------------------
+
     /**
      * 采用导数来进行查找, 比二分查找更快
      * ==>
@@ -29,6 +32,26 @@ public class ValidPerfectSquare {
             pre = cur;
         }
     }
+
+    /**
+     * 改进我写的导数法, 也就是牛顿迭代法
+     * 简洁化代码
+     *
+     * @param num
+     * @return
+     */
+    public boolean isPerfectSquare1(int num) {
+        if (num < 1) return false;
+        long t = num / 2;
+        while (t * t > num) {
+            t = (t + num / t) / 2;
+        }
+        return t * t == num;
+    }
+
+    //------------------------------------------------------------------
+    //binary search. Time Complexity O(logN)
+    //------------------------------------------------------------------
 
     /**
      * 采用二分法来进行查找
@@ -68,11 +91,34 @@ public class ValidPerfectSquare {
         return l == (double) num / l;
     }
 
+    //------------------------------------------------------------------
+    //a square number is 1+3+5+7+... Time Complexity O(sqrt(N))
+    //------------------------------------------------------------------
+
+    /**
+     * we can see:
+     * 1 = 1
+     * 4 = 1 + 3
+     * 9 = 1 + 3 + 5
+     * 16 = 1 + 3 + 5 + 7
+     * 25 = 1 + 3 + 5 + 7 + 9
+     *
+     * @param num
+     * @return
+     */
+    public boolean isPerfectSquare4(int num) {
+        if (num < 1) return false;
+        for (int i = 1; num > 0; i += 2) num -= i;
+        return num == 0;
+    }
+
     public static void main(String[] args) {
         ValidPerfectSquare test = new ValidPerfectSquare();
         int num = 808201;  //899
         System.out.println(test.isPerfectSquare(num));
+        System.out.println(test.isPerfectSquare1(num));
         System.out.println(test.isPerfectSquare2(num));
         System.out.println(test.isPerfectSquare3(num));
+        System.out.println(test.isPerfectSquare4(num));
     }
 }
