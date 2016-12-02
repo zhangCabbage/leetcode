@@ -108,8 +108,11 @@ public class PerfectSquares {
 
     /**
      * 这道题告诉我们智商与搬砖的区别。
-     * [Lagrange's Four Square theorem] ==> 任何一个数都能表示成四个平方和
-     * [Legendre's three-square theorem] ==>
+     * [Lagrange's Four Square theorem] ==> p = a^2 + b^2 + c^2 + d^2, p is natural number.
+     * [Legendre's three-square theorem] ==> n = x^2 + y^2 + z^2, only if n is not the form of n = 4^a * (8b + 7)
+     * [Fermat's theorem] ==> p = x^2 + y^2, only if p = (4a + 1)
+     * =>
+     * if n = 4^a * (8b + 7) ==> n = a^2 + b^2 + c^2 + d^2
      * <p>
      * 600 / 600 test cases passed.
      * Status: Accepted
@@ -121,9 +124,12 @@ public class PerfectSquares {
     public int numSquares4(int n) {
         if (isSquare(n)) return 1;
 
-        while ((n & 3) == 0) {
+        while ((n & 3) == 0) { //n % 4 == 0
             n >>= 2;
         }
+        //TODO
+        //reference: https://discuss.leetcode.com/topic/23808/o-sqrt-n-in-ruby-c-c/2
+        //=> n % 8 == 7, why? I can not get it.
         if ((n & 7) == 7) return 4;
 
         int sqrt = (int) Math.sqrt(n);
@@ -164,7 +170,7 @@ public class PerfectSquares {
 
     public static void main(String[] args) {
         PerfectSquares test = new PerfectSquares();
-        int n = 9732;
+        int n = 117;
         System.out.println(test.numSquares(n));
         System.out.println(test.numSquares2(n));
         System.out.println(test.numSquares3(n));
