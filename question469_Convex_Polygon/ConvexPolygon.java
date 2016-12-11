@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class ConvexPolygon {
     /**
+     * [Wrong]
      * 注意: points的是顺序的.
      * 使用凸多边形所有的点都在任意一边线的一侧边.
      * This method when points size is 10,000 => Time Limit Exceeded
@@ -39,6 +40,15 @@ public class ConvexPolygon {
                 }
             }
         }
+        return true;
+    }
+
+    /**
+     * @param points
+     * @return
+     */
+    public boolean isConvex2(List<List<Integer>> points) {
+
         return true;
     }
 
