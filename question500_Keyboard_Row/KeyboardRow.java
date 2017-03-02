@@ -35,8 +35,7 @@ public class KeyboardRow {
             if (j == words[i].length())
                 list.add(words[i]);
         }
-        String[] res = new String[0];
-        return list.toArray(res);
+        return list.toArray(new String[0]);
     }
 
     public static void main(String[] args) {

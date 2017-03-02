@@ -3,6 +3,7 @@ package zhang.algorithm.leetcode.question496_Next_Greater_ElementI;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 /**
  * Created by IntelliJ IDEA.
@@ -47,6 +48,57 @@ public class NextGreaterElementI {
                 findNums[i] = index;
             }
         }
+
+        return findNums;
+    }
+
+
+    /**
+     * 没有想出最佳解法, 这里用stack确实是很巧妙
+     *
+     * @param findNums
+     * @param nums
+     * @return
+     */
+    public int[] nextGreaterElement2(int[] findNums, int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        Stack<Integer> stack = new Stack();
+        //从前到后循环
+        for (int i = 0; i < nums.length; i++) {
+            while (!stack.isEmpty() && stack.peek() < nums[i])
+                map.put(stack.pop(), nums[i]);
+            stack.push(nums[i]);
+        }
+
+        for (int i = 0; i < findNums.length; i++)
+            findNums[i] = map.getOrDefault(findNums[i], -1);
+
+        return findNums;
+    }
+
+    /**
+     * The same as above, but loop from right to left
+     *
+     * @param findNums
+     * @param nums
+     * @return
+     */
+    public int[] nextGreaterElement3(int[] findNums, int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        Stack<Integer> stack = new Stack();
+        //
+        for (int i = nums.length - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && stack.peek() <= nums[i])
+                stack.pop();
+
+            if (stack.isEmpty()) map.put(nums[i], -1);
+            else map.put(nums[i], stack.peek());
+
+            stack.push(nums[i]);
+        }
+
+        for (int i = 0; i < findNums.length; i++)
+            findNums[i] = map.get(findNums[i]);
 
         return findNums;
     }

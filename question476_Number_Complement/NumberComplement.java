@@ -25,20 +25,57 @@ public class NumberComplement {
     }
 
     private int highestOneBit(int num) {
-        if(num == 0) return 0;
+        if (num == 0) return 0;
         int bit = 1;
 
-        if ((num >>> 16) > 0) { bit += 16; num >>>= 16; }
-        if ((num >>> 8) > 0) { bit += 8; num >>>= 8; }
-        if ((num >>> 4) > 0) { bit += 4; num >>>= 4; }
-        if ((num >>> 2) > 0) { bit += 2; num >>>= 2; }
+        if ((num >>> 16) > 0) {
+            bit += 16;
+            num >>>= 16;
+        }
+        if ((num >>> 8) > 0) {
+            bit += 8;
+            num >>>= 8;
+        }
+        if ((num >>> 4) > 0) {
+            bit += 4;
+            num >>>= 4;
+        }
+        if ((num >>> 2) > 0) {
+            bit += 2;
+            num >>>= 2;
+        }
 
         return bit + (num >>> 1);
+    }
+
+    /**
+     * @param num
+     * @return
+     */
+    public int findComplement2(int num) {
+        return ~num & ((Integer.highestOneBit(num) << 1) - 1);
+    }
+
+    /**
+     * This way can be run, but Above is faster!
+     * <p>
+     * The sum of num and it's complement num is 2^n-1(11.....111),
+     * so we can do like this.
+     *
+     * @param num
+     * @return
+     */
+    public int findComplement3(int num) {
+        return (Integer.highestOneBit(num) << 1) - 1 - num;
     }
 
 
     public static void main(String[] args) {
         NumberComplement test = new NumberComplement();
         System.out.println(test.findComplement(1));
+
+        System.out.println(Integer.toBinaryString(12));
+        System.out.println(Integer.toBinaryString(~12));
+        System.out.println(Integer.toBinaryString(-12));
     }
 }
