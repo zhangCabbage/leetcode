@@ -41,6 +41,7 @@ public class ReverseBits {
         for (int i = 0; i < 32; i++) {
             sum = (sum << 1) | (n >> i & 1);
         }
+
         return sum;
     }
 
@@ -69,10 +70,29 @@ public class ReverseBits {
         return n;
     }
 
+    /**
+     * Review Time: 2017-03-03 16:27:35
+     * New Method !!
+     * We can see the same result to the above solution.
+     * 不管从上往下,还是从下往上都能正常反转整个字符串
+     *
+     * @param n
+     * @return
+     */
+    public int reverseBits4(int n) {
+        n = ((n & 0xFFFF0000) >>> 16) | ((n & 0x0000FFFF) << 16);
+        n = ((n & 0xFF00FF00) >>> 8) | ((n & 0x00FF00FF) << 8);
+        n = ((n & 0xF0F0F0F0) >>> 4) | ((n & 0x0F0F0F0F) << 4);
+        n = ((n & 0xCCCCCCCC) >>> 2) | ((n & 0x33333333) << 2);
+        n = ((n & 0xAAAAAAAA) >>> 1) | ((n & 0x55555555) << 1);
+        return n;
+    }
+
     public static void main(String[] args) {
 //        System.out.println(-1 & 1);//1
         ReverseBits test = new ReverseBits();
         System.out.println(test.reverseBits2(65536));
         System.out.println(test.reverseBits3(65536));
+        System.out.println(test.reverseBits4(65536));
     }
 }

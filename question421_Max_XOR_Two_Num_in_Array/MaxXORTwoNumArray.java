@@ -32,13 +32,16 @@ public class MaxXORTwoNumArray {
      * 29 / 29 test cases passed.
      * Status: Accepted
      * Runtime: 96 ms, bit 63.13%
+     * <p>
+     * Review Time: 2017-03-03 10:37:53
+     * 这道题有点类似一个数组中找有没有两个数和为x的
      *
      * @param nums
      * @return
      */
     public int findMaximumXOR(int[] nums) {
         int max = 0, mask = 0;
-        for (int i = 31; i >= 0; i--) {
+        for (int i = 30; i >= 0; i--) {
             //从左到右, 只关注最大的
             mask |= (1 << i);
             HashSet<Integer> set = new HashSet<>();
@@ -52,6 +55,7 @@ public class MaxXORTwoNumArray {
                     break;
                 }
         }
+
         return max;
     }
 

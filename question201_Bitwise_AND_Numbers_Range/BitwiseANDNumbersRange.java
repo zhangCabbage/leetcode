@@ -60,6 +60,8 @@ public class BitwiseANDNumbersRange {
     /**
      * the result is same as me(9ms bit 20.61%)
      * But the logic is very necessary to know.
+     * <p>
+     * Nice !!
      *
      * @param m
      * @param n
@@ -89,6 +91,21 @@ public class BitwiseANDNumbersRange {
         return m << count;
     }
 
+    /**
+     * @param m
+     * @param n
+     * @return
+     */
+    public int rangeBitwiseAnd4(int m, int n) {
+        int res = 0;
+        int highM = Integer.highestOneBit(m);
+        int highN = Integer.highestOneBit(n);
+        if (highM == 0) return res;
+        if (highM == highN)
+            res = highM | rangeBitwiseAnd4(m ^ highM, n ^ highN);
+        return res;
+    }
+
     public static void main(String[] args) {
         BitwiseANDNumbersRange test = new BitwiseANDNumbersRange();
         int m = 600000000;
@@ -96,5 +113,6 @@ public class BitwiseANDNumbersRange {
         BitTool.showBinary(m);
         BitTool.showBinary(n);
         BitTool.showBinary(test.rangeBitwiseAnd(m, n));
+        BitTool.showBinary(test.rangeBitwiseAnd4(m, n));
     }
 }

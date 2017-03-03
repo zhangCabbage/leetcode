@@ -14,6 +14,10 @@ public class SumTwoIntegers {
      * 13 / 13 test cases passed
      * Status: Accepted
      * Runtime: 0 ms, bit 6.2%
+     * <p>
+     * Very nice!!!
+     * Review Time: 2017-03-03 12:01:44
+     * Can not to think this method!
      *
      * @param a
      * @param b
@@ -25,6 +29,7 @@ public class SumTwoIntegers {
             b = (a & b) << 1;
             a = temp;
         }
+
         return a ^ b;
     }
 

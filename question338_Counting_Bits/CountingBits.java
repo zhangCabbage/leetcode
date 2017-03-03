@@ -32,7 +32,7 @@ public class CountingBits {
     }
 
     /**
-     * 看一看正规使用正太规划的方式!!
+     * 更好的动态规划的方式!!
      * 15 / 15 test cases passed
      * Status: Accepted
      * Runtime: 3 ms, bit 42.6%

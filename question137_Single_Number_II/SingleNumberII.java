@@ -9,15 +9,22 @@ package zhang.algorithm.leetcode.question137_Single_Number_II;
  */
 public class SingleNumberII {
     /**
-     *
      * handle bit -- 掩码清零法
-     *
+     * <p>
      * <strong>result of test:</strong><br/>
      * 11 / 11 test cases passed
      * Status: Accepted
      * Runtime: 2 ms, bit 76.36%
-     *
+     * <p>
      * 参考:[【Acm之家 - 2014 03-28 LeetCode-Single Number II[位运算]】](http://www.acmerblog.com/leetcode-single-number-ii-5394.html)
+     * <p>
+     * Review Time: 2017-03-03 15:47:01
+     * 这里非常巧妙, 以至于复习时仍一点都不会这种方法
+     * ---->
+     * one、two
+     * two |= one & nums[i]
+     * one ^= nums[i]
+     * three = one & two
      *
      * @param nums
      * @return
@@ -57,6 +64,7 @@ public class SingleNumberII {
 
     /**
      * 我们可以使用一个24size的数组, 来模拟位的控制运算
+     * 更容易理解, 重现
      *
      * @param nums
      * @return
@@ -64,6 +72,7 @@ public class SingleNumberII {
     public int singleNumber2(int[] nums) {
         int[] bits = new int[32];
         int result = 0;
+
         for (int i = 0; i < bits.length; i++) {
             for (int j = 0; j < nums.length; j++) {
                 if ((nums[j] >> i & 1) != 0) {
@@ -72,6 +81,7 @@ public class SingleNumberII {
             }
             result |= bits[i] % 3 << i;
         }
+
         return result;
     }
 
