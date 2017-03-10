@@ -12,7 +12,7 @@ public class GrayCode {
      * 但是这道题我没有想到有效的算法解决,通过百度百科倒是有对应的解决方案,针对其定义中的特点:反射码/循环码来生成
      * <br/>
      * 最后利用递推的原理做出来的,这道题目提示使用回溯来完成,具体方法有待探索<br/>
-     *
+     * <p>
      * <strong>测试结果:</strong><br/>
      * 12 / 12 test cases passed.<br/>
      * Status: Accepted<br/>
@@ -27,16 +27,16 @@ public class GrayCode {
 
     private List<Integer> recusiveGeneratorGrayCode(int n) {
         List<Integer> grayList = new ArrayList<>();
-        if(n == 0){
+        if (n == 0) {
             grayList.add(0);
-        }else if(n == 1){
+        } else if (n == 1) {
             grayList.add(0);
             grayList.add(1);
-        }else if(n > 1){
-            grayList = recusiveGeneratorGrayCode(n-1);
+        } else if (n > 1) {
+            grayList = recusiveGeneratorGrayCode(n - 1);
             int len = grayList.size();
-            for(int i=0; i<len; i++){
-                grayList.add( grayList.get(len-i-1)|1<<(n-1) );
+            for (int i = 0; i < len; i++) {
+                grayList.add(grayList.get(len - i - 1) | 1 << (n - 1));
             }
         }
 
@@ -45,8 +45,8 @@ public class GrayCode {
 
     /**
      * 还可以从自然数二进制编码直接转换成对应的格雷码的方式来解这道题<br/>
-     * 二进制码→格雷码（编码）<br/>
-     * 格雷码→二进制码（解码）该怎么转换?结合异或两次仍为自身的思想,进行解码<br/>
+     * 二进制码   →    格雷码（编码）<br/>
+     * 格雷码     →    二进制码（解码）该怎么转换?结合异或两次仍为自身的思想,进行解码<br/>
      * <br/>
      * 测试结果同上
      *
@@ -55,8 +55,8 @@ public class GrayCode {
      */
     public List<Integer> grayCode2(int n) {
         List<Integer> grayList = new ArrayList<>();
-        for (int i=0; i<(int)Math.pow(2, n); i++){
-            grayList.add(i^i>>1);
+        for (int i = 0; i < (int) Math.pow(2, n); i++) {
+            grayList.add(i ^ i >> 1);
         }
         return grayList;
     }

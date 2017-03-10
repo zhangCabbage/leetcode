@@ -91,6 +91,9 @@ public class RepeatedDNASequences {
     //---------------------------------------------------------------------
 
     /**
+     * Review Time: 2017-03-03 20:02:04
+     * I can not to solve it !
+     * <p>
      * <strong>result of test:</strong><br/>
      * 32 / 32 test cases passed
      * Status: Accepted

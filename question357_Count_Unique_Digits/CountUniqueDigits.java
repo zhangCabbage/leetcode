@@ -6,6 +6,11 @@ package zhang.algorithm.leetcode.question357_Count_Unique_Digits;
  * Date: 16/10/27
  * Time: 下午9:06
  * To change this template use File | Settings | File Templates.
+ * <p>
+ * [Review Time]: 2017-03-06 15:43:29
+ * 没有啥印象, 果然第一次的时候没有做出来, 最后看了别人的答案印象也不深!!
+ * <p>
+ * 没读清楚题意!!
  */
 public class CountUniqueDigits {
     /**
@@ -98,6 +103,10 @@ public class CountUniqueDigits {
      * 9 / 9 test cases passed
      * Status: Accepted
      * Runtime: 98 - 100 ms, bit 4.3%
+     * <p>
+     * 关于如何找不相同数的问题?
+     * 找 fun(n) ,其实需要找 x<=n 所有的, 在review的时候, 我准备在这个地方重新遍历。
+     * 这个方法比我好的地方在于, 自动省略后面的步骤。
      *
      * @param n
      * @return
@@ -131,12 +140,12 @@ public class CountUniqueDigits {
                 used[i] = true;
                 long cur = pre * 10 + i;
                 int tmp = recursive(cur, max, used);
-//                if (tmp == 0) break;  //wrong!!
+//                if (tmp == 0) break;  //wrong, used[i] = true should be reset
                 count += tmp;
                 used[i] = false;
             }
         }
-
+        
         return count;
     }
 

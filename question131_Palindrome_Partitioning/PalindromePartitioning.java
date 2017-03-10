@@ -10,6 +10,9 @@ import java.util.List;
  * Date: 2016/7/1
  * Time: 15:46 - 16:50 more than one hour
  * To change this template use File | Settings | File Templates.
+ * <p>
+ * Review Time: 2017-03-06 11:44:17
+ * I almost forget it's my solution!
  */
 public class PalindromePartitioning {
     /**
@@ -107,6 +110,7 @@ public class PalindromePartitioning {
                 return false;
             }
         }
+
         return true;
     }
 

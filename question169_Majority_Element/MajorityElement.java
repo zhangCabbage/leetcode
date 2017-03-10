@@ -44,6 +44,9 @@ public class MajorityElement {
                 }
             }
         }
+
         return elem;
+
+
     }
 }

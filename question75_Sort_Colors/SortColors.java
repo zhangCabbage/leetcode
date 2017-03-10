@@ -4,6 +4,9 @@ import zhang.algorithm.modelUtil.Array.ArrayTool;
 
 /**
  * Created by zhang_zack on 16/5/27.
+ * <p>
+ * Review Time: 2017-03-09 19:36:00
+ * sortColors2方法好像不怎么好理解
  */
 public class SortColors {
     /**
@@ -52,6 +55,29 @@ public class SortColors {
                 i--;
                 end--;
             }
+        }
+
+
+    }
+
+    /**
+     * 对于sortColors2的逻辑我自己绕了半个多小时, 真是醉了
+     * start和i是同一起点, 所以当nums[i] == 0时, 交换后, 需要i和start都加1
+     * 而end和i不是一起的, 所以当nums[i] == 2时
+     * start最后停留的地方肯定是1
+     *
+     * @param nums
+     */
+    public void sortColors3(int[] nums) {
+        int start = 0, end = nums.length - 1;
+        int i = start;
+
+        while (i <= end) {
+            if (nums[i] == 0) {
+                ArrayTool.swap(nums, i++, start++);
+            } else if (nums[i] == 2) {
+                ArrayTool.swap(nums, i, end--);
+            } else i++;
         }
     }
 

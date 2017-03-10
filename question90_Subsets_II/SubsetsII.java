@@ -30,16 +30,12 @@ public class SubsetsII {
 
     private void recusiveSearch(List<List<Integer>> lists, List<Integer> list, int[] nums, int start) {
         lists.add(list);
-        for(int i=start; i<nums.length; i++){
-            while(i!=start && nums[i]==nums[i-1]){
-                i++;
-                if(i == nums.length){
-                    return;
-                }
-            }
-            List<Integer> nextList = new ArrayList<Integer>(list);
+        for (int i = start; i < nums.length; i++) {
+            if (i != start && nums[i] == nums[i - 1]) continue;
+
+            List<Integer> nextList = new ArrayList<>(list);
             nextList.add(nums[i]);
-            recusiveSearch(lists, nextList, nums, i+1);
+            recusiveSearch(lists, nextList, nums, i + 1);
         }
     }
 

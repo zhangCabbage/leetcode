@@ -16,40 +16,39 @@ public class MergeSortedArray {
      * @param n
      */
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        for(int i=m; i>0; i--){
-            nums1[n+i-1] = nums1[i-1];
+        for (int i = m; i > 0; i--) {
+            nums1[n + i - 1] = nums1[i - 1];
         }
 
         int index = 0;
         int i = 0;
         int j = 0;
-        while(i<m && j<n){
-            if(nums1[n+i] < nums2[j]){
-                nums1[index++] = nums1[n+(i++)];
-            }else{
+        while (i < m && j < n) {
+            if (nums1[n + i] < nums2[j]) {
+                nums1[index++] = nums1[n + (i++)];
+            } else {
                 nums1[index++] = nums2[j++];
             }
         }
-        while(j<n){
+        while (j < n) {
             nums1[index++] = nums2[j++];
         }
     }
 
     /**
-     *
      * @param nums1
      * @param m
      * @param nums2
      * @param n
      */
     public void merge2(int[] nums1, int m, int[] nums2, int n) {
-        int index = m+n;
+        int index = m + n;
         m--;
         n--;
-        while(--index>=0){
-            if((m>=0&&n>=0) && nums1[m]>nums2[n]){
+        while (--index >= 0) {
+            if ((m >= 0 && n >= 0) && nums1[m] > nums2[n]) {
                 nums1[index] = nums1[m--];
-            }else if(n>=0){
+            } else if (n >= 0) {
                 nums1[index] = nums2[n--];
             }
         }

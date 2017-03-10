@@ -1,5 +1,6 @@
 package zhang.algorithm.leetcode.question142_Linked_List_Cycle_II;
 
+import zhang.algorithm.modelUtil.List.LinkedListTools;
 import zhang.algorithm.modelUtil.List.ListNode;
 
 /**
@@ -46,5 +47,35 @@ public class LinkedListCycleII {
             second = second.next;
         }
         return first;
+    }
+
+    /**
+     * Review Time: 2017-03-10 10:28:58
+     *
+     * @param head
+     * @return
+     */
+    public ListNode detectCycle2(ListNode head) {
+        ListNode fast = head, slow = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                slow = head;
+                while (slow != fast) {
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+                return slow;
+            }
+        }
+
+        return null;
+    }
+
+    public static void main(String[] args) {
+        LinkedListCycleII test = new LinkedListCycleII();
+        System.out.println(test.detectCycle2(LinkedListTools.factory(new int[]{1, 2})));
+        System.out.println(test.detectCycle(LinkedListTools.factory(new int[]{1, 2})));
     }
 }

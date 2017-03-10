@@ -52,6 +52,8 @@ public class MinimumSizeSubarraySum {
 
     /**
      * the same result, but this is more better.
+     * Review Time: 2017-03-10 15:00:26
+     * 这个代码有问题, if eg is :15 \ [1,2,3,4,5]
      *
      * @param s
      * @param nums
@@ -62,17 +64,19 @@ public class MinimumSizeSubarraySum {
             return 0;
 
         int i = 0, j = 0, sum = 0, min = nums.length;
+        boolean flag = false;
 
         while (j < nums.length) {
             sum += nums[j++];
 
             while (sum >= s) {
+                flag = true;
                 min = Math.min(min, j - i);
                 sum -= nums[i++];
             }
         }
 
-        return min == nums.length ? 0 : min;
+        return flag ? min : 0;
     }
 
     //-------------------------------------------------------------------
