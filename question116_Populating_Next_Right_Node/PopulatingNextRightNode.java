@@ -60,25 +60,24 @@ public class PopulatingNextRightNode {
     }
 
     /**
-     * copy the below method with not to see one by one
+     * Review Time: 2017-03-16 20:25:45
+     *
      * @param root
      */
     public void connect3(TreeLinkNode root) {
-        if (root == null) return;
-        TreeLinkNode cur = root;
-        TreeLinkNode nextLeft = null;
-
-        while (cur.left != null) {
-            nextLeft = cur.left;
-            while (cur != null) {
-                cur.left.next = cur.right;
-                cur.right.next = cur.next == null ? null : cur.next.left;
-                cur = cur.next;
+        if (root != null) {
+            TreeLinkNode l = root.left;
+            TreeLinkNode r = root.right;
+            while (l != null) {
+                l.next = r;
+                l = l.right;
+                r = r.left;
             }
-            cur = nextLeft;
+            connect3(root.left);
+            connect3(root.right);
         }
-
     }
+
 }
 
 class TreeLinkNode {

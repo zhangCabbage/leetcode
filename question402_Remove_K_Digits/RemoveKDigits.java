@@ -9,6 +9,7 @@ import java.util.List;
  * Date: 16/9/29
  * Time: 下午10:41
  * To change this template use File | Settings | File Templates.
+ * Review Time: 2017-03-15 11:02:49
  */
 public class RemoveKDigits {
     /**
@@ -86,9 +87,35 @@ public class RemoveKDigits {
 //          num = sub(lambda m: m.group()[1:], num, 1)
 //      return num.lstrip('0') or '0'
 
+    /**
+     * 代码非常简洁, 并且使用数组来实现stack的功能, 非常棒!!
+     *
+     * @param num
+     * @param k
+     * @return
+     */
+    public String removeKdigits2(String num, int k) {
+        int digits = num.length() - k;
+        char[] stack = new char[num.length()];
+        int top = 0;
+
+        for (int i = 0; i < num.length(); i++) {
+            char c = num.charAt(i);
+            while (top > 0 && stack[top - 1] > c && k > 0) {
+                top -= 1;
+                k--;
+            }
+            stack[top++] = c;
+        }
+
+        int idx = 0;
+        while (idx < digits && stack[idx] == '0') idx++;
+        return idx == digits ? "0" : new String(stack, idx, digits - idx);
+    }
+
     public static void main(String[] args) {
         RemoveKDigits test = new RemoveKDigits();
-        String num = "10";
+        String num = "102893";
         int k = 1;
         System.out.println(test.removeKdigits(num, k));
     }

@@ -7,7 +7,6 @@ import zhang.algorithm.modelUtil.List.ListNode;
  */
 public class RemoveDuplicatesSortedListII {
     /**
-     *
      * <br/>
      * <strong>测试结果:</strong><br/>
      * 166 / 166 test cases passed.<br/>
@@ -24,25 +23,56 @@ public class RemoveDuplicatesSortedListII {
         ListNode curNode = head;
         boolean flag = false;
 
-        while(curNode!=null && curNode.next!=null){
-            if(curNode.val != curNode.next.val){
-                if(flag == false){
+        while (curNode != null && curNode.next != null) {
+            if (curNode.val != curNode.next.val) {
+                if (flag == false) {
                     preNode.next = curNode;
                     preNode = curNode;
                 }
                 curNode = curNode.next;
                 flag = false;
-            }else{
+            } else {
                 flag = true;
                 curNode = curNode.next;
             }
         }
-        if(flag==false){
+        if (flag == false) {
             preNode.next = curNode;
-        }else{
+        } else {
             preNode.next = null;
         }
         return preHead.next;
+    }
+
+    /**
+     * Review Time: 2017-03-12 17:23:28
+     *
+     * @param head
+     * @return
+     */
+    public ListNode deleteDuplicates2(ListNode head) {
+        ListNode empty = new ListNode(0);
+        ListNode tail = empty;
+        boolean flag = false;
+
+        while (head != null && head.next != null) {
+            if (head.val == head.next.val) {
+                flag = true;
+                head.next = head.next.next;
+            } else {
+                if (flag) {
+                    head = head.next;
+                    flag = false;
+                } else {
+                    tail.next = head;
+                    tail = head;
+                    head = head.next;
+                    tail.next = null;
+                }
+            }
+        }
+        if (head != null && !flag) tail.next = head;
+        return empty.next;
     }
 
     public static void main(String[] args) {

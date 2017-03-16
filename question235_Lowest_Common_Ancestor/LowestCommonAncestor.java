@@ -51,6 +51,7 @@ public class LowestCommonAncestor {
     private int helper(TreeNode root, TreeNode p, TreeNode q) {
         int count = 0;
         if (root == null) return count;
+
         if (root.val == p.val || root.val == q.val) {
             if (common == null) {
                 common = root;

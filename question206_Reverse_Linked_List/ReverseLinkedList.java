@@ -21,7 +21,7 @@ public class ReverseLinkedList {
     public ListNode reverseList(ListNode head) {
         ListNode reverseHead = new ListNode(0);
         ListNode reverseNext = reverseHead.next;
-        while(head != null){
+        while (head != null) {
             ListNode next = head.next;
 
             reverseHead.next = head;
@@ -43,7 +43,7 @@ public class ReverseLinkedList {
      * @return
      */
     public ListNode reverseList2(ListNode head) {
-        if(head==null || head.next==null){
+        if (head == null || head.next == null) {
             return head;
         }
         ListNode reverseHead = reverseList2(head.next);
@@ -53,7 +53,6 @@ public class ReverseLinkedList {
     }
 
     /**
-     *
      * <strong>result of test:</strong><br/>
      * 27 / 27 test cases passed<br/>
      * Status: Accepted<br/>
@@ -63,12 +62,13 @@ public class ReverseLinkedList {
      * @return
      */
     public ListNode reverseList3(ListNode head) {
-        if(head==null || head.next==null){
+        if (head == null || head.next == null) {
             return head;
         }
         ListNode pre = head, cur = head.next, next;
         pre.next = null;
-        while(cur!=null){
+
+        while (cur != null) {
             next = cur.next;
             cur.next = pre;
             pre = cur;

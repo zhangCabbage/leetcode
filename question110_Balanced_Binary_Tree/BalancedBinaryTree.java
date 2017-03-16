@@ -4,6 +4,9 @@ import zhang.algorithm.modelUtil.Tree.TreeNode;
 
 /**
  * Created by zhang_zack on 16/6/16.
+ * <p>
+ * Review Time: 2017-03-14 15:02:05
+ * 编程时能简化的步骤要简化, 比如这里的return -1表示不平衡二叉树
  */
 public class BalancedBinaryTree {
 
@@ -29,17 +32,11 @@ public class BalancedBinaryTree {
      * @return
      */
     private int treeHeight(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        int leftDepth = treeHeight(root.left);
-        if (leftDepth < 0) {
-            return -1;
-        }
-        int rightDepth = treeHeight(root.right);
-        if (rightDepth < 0 || Math.abs(leftDepth - rightDepth) > 1) {
-            return -1;
-        }
-        return Math.max(leftDepth, rightDepth) + 1;
+        if (root == null) return 0;
+        int lh = treeHeight(root.left);
+        if (lh < 0) return -1;
+        int rh = treeHeight(root.right);
+        if (rh < 0 || Math.abs(lh - rh) > 1) return -1;
+        return Math.max(lh, rh) + 1;
     }
 }

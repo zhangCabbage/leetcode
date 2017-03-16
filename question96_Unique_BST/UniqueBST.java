@@ -11,17 +11,19 @@ public class UniqueBST {
     /**
      * 不用想,这个更是超时,这里我是想对比一下递归\递归加备忘录\动态规划之间在同一程序运行的差异<br/>
      * 所以我才想把递归的方法也写出来了!!
+     *
      * @param n
      * @return
      */
     public int numTrees0(int n) {
-        if(n == 0){
+        if (n == 0) {
             return 1;
         }
         int sum = 0;
-        for(int i=1; i<=n; i++){
-            sum += numTrees0(i-1)*numTrees0(n-i);
+        for (int i = 1; i <= n; i++) {
+            sum += numTrees0(i - 1) * numTrees0(n - i);
         }
+
         return sum;
     }
 
@@ -31,6 +33,7 @@ public class UniqueBST {
      * <br/>
      * <strong>测试结果:</strong><br/>
      * Time Limit Exceeded<br/>
+     *
      * @param n
      * @return
      */
@@ -42,17 +45,17 @@ public class UniqueBST {
         return recusiveFind(n, temp);
     }
 
-    private int recusiveFind(int n, int[] temp){
-        if(n <= 1){
+    private int recusiveFind(int n, int[] temp) {
+        if (n <= 1) {
             return 1;
         }
 
         int totalNum = 0;
-        for(int i=1; i<=n; i++){
-            int left = temp[i-1] != 0 ? temp[i-1] : recusiveFind(i-1, temp);
-            int right = temp[n-i] != 0 ? temp[n-i] : recusiveFind(n-i, temp);
+        for (int i = 1; i <= n; i++) {
+            int left = temp[i - 1] != 0 ? temp[i - 1] : recusiveFind(i - 1, temp);
+            int right = temp[n - i] != 0 ? temp[n - i] : recusiveFind(n - i, temp);
 
-            int sum = left*right;
+            int sum = left * right;
             totalNum += sum;
         }
 
@@ -72,13 +75,14 @@ public class UniqueBST {
      */
     public int numTrees2(int n) {
 
-        int[] temp = new int[n+1];
+        int[] temp = new int[n + 1];
         temp[0] = 1;
-        for(int i=1; i<=n; i++){
-            for(int j=0; j<i; j++){
-                temp[i] += temp[j]*temp[i-j-1];
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j < i; j++) {
+                temp[i] += temp[j] * temp[i - j - 1];
             }
         }
+        
         return temp[n];
     }
 
@@ -88,15 +92,15 @@ public class UniqueBST {
 
         ZhangUtil.setStartTime();
         System.out.println(test.numTrees0(n));
-        System.out.println("递归耗时---->"+ZhangUtil.getIntervalTime()+"ms");
+        System.out.println("递归耗时---->" + ZhangUtil.getIntervalTime() + "ms");
 
         ZhangUtil.setStartTime();
         System.out.println(test.numTrees1(n));
-        System.out.println("递归加备忘录优化耗时---->"+ZhangUtil.getIntervalTime()+"ms");
+        System.out.println("递归加备忘录优化耗时---->" + ZhangUtil.getIntervalTime() + "ms");
 
         ZhangUtil.setStartTime();
         System.out.println(test.numTrees2(n));
-        System.out.println("动态规划耗时---->"+ZhangUtil.getIntervalTime()+"ms");
+        System.out.println("动态规划耗时---->" + ZhangUtil.getIntervalTime() + "ms");
 
 //        当n为19时
 //        1767263190
