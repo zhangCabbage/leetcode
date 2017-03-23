@@ -6,6 +6,8 @@ package zhang.algorithm.leetcode.question424_Longest_Repeating_Character_Replace
  * Date: 16/10/18
  * Time: 下午9:41
  * To change this template use File | Settings | File Templates.
+ * <p>
+ * Review Time: 2017-03-17 13:39:47
  */
 public class LongestRepeatingCharacter {
     /**
