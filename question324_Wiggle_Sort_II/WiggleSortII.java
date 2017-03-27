@@ -12,6 +12,12 @@ import java.util.Arrays;
  * To change this template use File | Settings | File Templates.
  * <p>
  * https://leetcode.com/problems/wiggle-sort-ii/
+ * Review Time: 2017-03-26 11:30:55
+ * 这道题的总体思想是:
+ * -- 把数组分成两部分(小的, 大的)
+ * -- 因为小的、大的中间部分可能相等衔接, 所以小组中的大数放在前, 大组中的小数放在后
+ * -- 一种解决方案就是: 排序, 中间分隔, 前后分别倒序, 然后交叉
+ * -- 但是其实除了要求前后两部分大小分隔开来, 中间衔接相等处分开外, 没有排序要求
  */
 public class WiggleSortII {
     //----------------------------------------------------------------------------
@@ -176,6 +182,10 @@ public class WiggleSortII {
      * 3, 4, 5 ==> 0, 2, 4
      * <p>
      * odd % odd = even, so let n | 1 become a odd
+     * [❤❤❤❤]
+     * i -> [0, n-1], 故 2*x+1 -> [1, 2*n-1]
+     * 所以 2*x+1 % n 顶多为 2*x+1 - n
+     * 2*x+1 为奇数, 奇数 - 偶数 永远为奇数, 所以这里我们需要把n转变为奇数
      *
      * @param i
      * @param n
@@ -186,6 +196,8 @@ public class WiggleSortII {
     }
 
     /**
+     * 让 nums 数组: 左大、右小
+     *
      * @param nums
      * @param k
      * @return

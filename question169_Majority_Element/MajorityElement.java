@@ -15,6 +15,8 @@ package zhang.algorithm.leetcode.question169_Majority_Element;
  * 2) hashmap
  * 3) bit manipulation(use to instead of hashmap)
  * 4) moore voting
+ * <p>
+ * Review Time: 2017-03-25 10:56:11
  */
 public class MajorityElement {
     /**
@@ -30,23 +32,17 @@ public class MajorityElement {
      * @return
      */
     public int majorityElement(int[] nums) {
-        int elem = 0;
-        int num = 0;
+        int num = 0, count = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (num == 0) {
-                elem = nums[i];
-                num = 1;
+            if (count == 0) {
+                num = nums[i];
+                count++;
             } else {
-                if (nums[i] == elem) {
-                    num++;
-                } else {
-                    num--;
-                }
+                if (num == nums[i]) count++;
+                else count--;
             }
         }
 
-        return elem;
-
-
+        return num;
     }
 }

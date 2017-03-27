@@ -6,6 +6,8 @@ package zhang.algorithm.leetcode.question198_House_Robber;
  * Date: 16/7/13
  * Time: 上午10:45
  * To change this template use File | Settings | File Templates.
+ * <p>
+ * Review Time: 2017-03-25 21:23:10
  */
 public class HouseRobber {
     /**
@@ -66,4 +68,20 @@ public class HouseRobber {
 
         return max[len - 1];
     }
+
+    /**
+     * @param nums
+     * @return
+     */
+    public int rob3(int[] nums) {
+        if (nums == null || nums.length < 1) return 0;
+        int[] res = new int[nums.length];
+
+        for (int i = 0; i < nums.length; i++)
+            res[i] = Math.max(i > 0 ? res[i - 1] : 0, (i > 1 ? res[i - 2] : 0) + nums[i]);
+
+        return res[nums.length - 1];
+    }
+
+
 }

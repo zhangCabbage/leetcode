@@ -31,6 +31,9 @@ public class LowestCommonAncestor {
      * [深入思考]
      * 我思考这道题的时候没有考虑到题目中的 [binary search tree (BST)] 条件, 我的方法具有通用性, 对任意一个二叉树都适用。
      * 这里我应该要利用好二叉搜索树这个条件进行发挥。
+     * <p>
+     * Review Time: 2017-03-25 12:08:49
+     * 代码整合太辣鸡了, 解法详见下一题: question236
      *
      * @param root
      * @param p
