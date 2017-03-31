@@ -6,6 +6,8 @@ package zhang.algorithm.leetcode.question205_Isomorphic_Strings;
  * Date: 16/7/18
  * Time: 下午9:14
  * To change this template use File | Settings | File Templates.
+ * <p>
+ * Review Time: 2017-03-28 14:56:10
  */
 public class IsomorphicStrings {
     /**
@@ -41,6 +43,25 @@ public class IsomorphicStrings {
             } else if (smap[schar[i]] != tchar[i] || tmap[tchar[i]] != schar[i]) {
                 return false;
             }
+        }
+
+        return true;
+    }
+
+    /**
+     * @param s
+     * @param t
+     * @return
+     */
+    public boolean isIsomorphic2(String s, String t) {
+        if (s.length() != t.length()) return false;
+
+        int[] map1 = new int[256];
+        int[] map2 = new int[256];
+        for (int i = 0; i < s.length(); i++) {
+            if (map1[s.charAt(i)] != map2[t.charAt(i)]) return false;
+            map1[s.charAt(i)] = i + 1;
+            map2[t.charAt(i)] = i + 1;
         }
 
         return true;

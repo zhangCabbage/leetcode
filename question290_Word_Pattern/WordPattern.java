@@ -2,6 +2,7 @@ package zhang.algorithm.leetcode.question290_Word_Pattern;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by IntelliJ IDEA.
@@ -39,6 +40,29 @@ public class WordPattern {
             } else if (temp1 != null && temp2 != null && temp1.equals(strs[i])) {
             } else return false;
         }
+        return true;
+    }
+
+
+    /**
+     * 33 / 33 test cases passed.
+     * Status: Accepted
+     * Runtime: 2 ms, bit 41.71%
+     *
+     * @param pattern
+     * @param str
+     * @return
+     */
+    public boolean wordPattern2(String pattern, String str) {
+        String[] words = str.split(" ");
+        if (pattern.length() != words.length) return false;
+
+        Map<Object, Integer> map = new HashMap();
+        for (int i = 0; i < words.length; i++) {
+            if (!Objects.equals(map.put(pattern.charAt(i), i), map.put(words[i], i)))
+                return false;
+        }
+
         return true;
     }
 

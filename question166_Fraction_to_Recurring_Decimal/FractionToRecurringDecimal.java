@@ -71,7 +71,6 @@ public class FractionToRecurringDecimal {
             }
 
             map.put(mod, ++index);
-
         }
 
         return sb.toString();

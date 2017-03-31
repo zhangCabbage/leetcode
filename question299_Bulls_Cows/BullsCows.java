@@ -68,11 +68,9 @@ public class BullsCows {
             if (s == g) {
                 bull++;
             } else {
-                if (map[s] < 0)
-                    cow++;
+                if (map[s] < 0) cow++;
+                if (map[g] > 0) cow++;
                 map[s]++;
-                if (map[g] > 0)
-                    cow++;
                 map[g]--;
             }
         }
