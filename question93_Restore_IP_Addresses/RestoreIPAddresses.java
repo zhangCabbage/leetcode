@@ -62,6 +62,49 @@ public class RestoreIPAddresses {
         }
     }
 
+
+    //-----------------------------------------------------------------------------------------------------
+    // review code, date: 2017/7/22
+    //-----------------------------------------------------------------------------------------------------
+    private List<String> res = null;
+
+    /**
+     * 4:38 - 5:00
+     *
+     * @param s
+     * @return
+     */
+    public List<String> restoreIpAddresses2(String s) {
+        res = new ArrayList<>();
+        if (s == null || s.length() < 4) return res;
+
+        int[] position = new int[5];
+        position[4] = s.length();
+        restoreIpAddresses(s.toCharArray(), 0, 1, position);
+
+        return res;
+    }
+
+    private void restoreIpAddresses(char[] c, int start, int step, int[] position) {
+        if (step == 5) {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 1; i < position.length; i++) {
+                if (i != 1) sb.append(".");
+                sb.append(c, position[i - 1], position[i] - position[i - 1]);
+            }
+            res.add(sb.toString());
+        } else {
+            int minl = Math.max((c.length - start) - 3 * (4 - step), 1);
+            int maxl = Math.min((c.length - start) - (4 - step), 3);
+            while (minl <= maxl) {
+                if ((c[start] == '0' && minl != 1) || Integer.parseInt(String.valueOf(c, start, minl)) > 255) break;
+                position[step - 1] = start;
+                restoreIpAddresses(c, start + minl, step + 1, position);
+                minl++;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         RestoreIPAddresses test = new RestoreIPAddresses();
         String s = "010010";

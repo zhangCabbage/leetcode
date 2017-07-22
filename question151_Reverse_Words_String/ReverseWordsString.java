@@ -8,6 +8,8 @@ import java.util.regex.Pattern;
  * Date: 16/7/11
  * Time: 下午7:41
  * To change this template use File | Settings | File Templates.
+ * <p>
+ * leetcode 单词反转比剑指offer上的情况要更加复杂, 设计到空格的控制
  */
 public class ReverseWordsString {
     /**
@@ -180,17 +182,16 @@ public class ReverseWordsString {
                 }
                 end--;
             }
-
         }
         reverse(str, start, end);
         return new String(str, start, end - start + 1);
     }
 
-    private void reverse(char[] chs, int left, int right) {
-        for (int wL = left, wR = right; wL < wR; wL++, wR--) {
-            char ch = chs[wL];
-            chs[wL] = chs[wR];
-            chs[wR] = ch;
+    private void reverse(char[] c, int l, int r) {
+        while (l < r) {
+            char tmp = c[l];
+            c[l++] = c[r];
+            c[r--] = tmp;
         }
     }
 
