@@ -65,6 +65,8 @@ public class BasicCalculatorII {
      * 109 / 109 test cases passed
      * Status: Accepted
      * Runtime: 35 ms, bit 64.29%
+     * <p>
+     * 很好, 把表达式前面默认加上 "0+" + str
      *
      * @param s
      * @return
@@ -113,7 +115,7 @@ public class BasicCalculatorII {
      * pre = -1*3
      * pre = pre/4
      * res += pre
-     *
+     * <p>
      * 109 / 109 test cases passed
      * Status: Accepted
      * Runtime: 14 ms, bit 95.04%
