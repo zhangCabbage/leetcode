@@ -83,6 +83,36 @@ public class TopKFrequentElements {
         if (right > l) fastSort(values, keys, l + 1, right);
     }
 
+    /**
+     * 不使用快速排序，使用map后，采用桶排序的方式， nice
+     * @param nums
+     * @param k
+     * @return
+     */
+    public List<Integer> topKFrequent3(int[] nums, int k){
+        List<Integer>[] bucket = new List[nums.length + 1];
+
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            frequencyMap.put(nums[i], frequencyMap.getOrDefault(nums[i], 0) + 1);
+        }
+
+        for(int key: frequencyMap.keySet()){
+            int frequency = frequencyMap.get(key);
+            if(bucket[frequency] == null)
+                bucket[frequency] = new ArrayList<>();
+            bucket[frequency].add(key);
+        }
+
+        List<Integer> res = new ArrayList<>(k);
+        for (int i = bucket.length - 1; i >= 0 && res.size() < k; i--) {
+            if(bucket[i] != null)
+                res.addAll(bucket[i]);
+        }
+
+        return res;
+    }
+
     public static void main(String[] args) {
         TopKFrequentElements test = new TopKFrequentElements();
         int[] nums = {};

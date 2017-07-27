@@ -101,6 +101,7 @@ public class FractionToRecurringDecimal {
             return result.toString();
         }
         result.append(".");
+
         Map<Long, Integer> map = new HashMap<>();
         while (x != 0 && !map.containsKey(x)) {
             map.put(x, result.length());
@@ -108,6 +109,7 @@ public class FractionToRecurringDecimal {
             result.append(x / y);
             x %= y;
         }
+
         if (x != 0) {
             result.insert(map.get(x), "(");
             result.append(")");

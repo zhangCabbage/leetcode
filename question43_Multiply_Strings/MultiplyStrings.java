@@ -206,6 +206,7 @@ public class MultiplyStrings {
                 }
             }
         }
+
         String res = new String(toChar(result));
         while (res.length() > 1 && res.charAt(0) == '0') {
             res = res.substring(1);
