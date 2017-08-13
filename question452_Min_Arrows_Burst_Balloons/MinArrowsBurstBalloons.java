@@ -30,6 +30,7 @@ public class MinArrowsBurstBalloons {
                 return point1[1] - point2[1];
             }
         });
+
         int count = 0;
         int max = Integer.MIN_VALUE;
         for (int[] invertal : points) {

@@ -55,6 +55,8 @@ public class MaximumProductSubarray {
      * Status: Accepted
      * Runtime: 2 ms, bit 92.34%
      *
+     * 其分析参见为知笔记 - [我的笔记/找工作/leetcode.md]分析
+     *
      * @param nums
      * @return
      */
@@ -148,7 +150,7 @@ public class MaximumProductSubarray {
 
     public static void main(String[] args) {
         MaximumProductSubarray test = new MaximumProductSubarray();
-        int[] nums = {-2, 0, 0, 3, -4, -1, 2};
+        int[] nums = {-2, 0};
         System.out.println(test.maxProduct(nums));
         System.out.println(test.maxProduct2(nums));
         System.out.println(test.maxProduct3(nums));
