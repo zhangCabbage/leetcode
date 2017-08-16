@@ -115,8 +115,9 @@ public class TopKFrequentElements {
 
     public static void main(String[] args) {
         TopKFrequentElements test = new TopKFrequentElements();
-        int[] nums = {};
-        int k = 0;
+        int[] nums = {1, 1, 1, 2, 2, 3, 3};
+        int k = 2;
         System.out.println(test.topKFrequent2(nums, k));
+        System.out.println(test.topKFrequent3(nums, k));
     }
 }
